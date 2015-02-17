@@ -14,24 +14,44 @@
         width: 2000px;
         height: 2000px;
         border: 10px solid transparent;
+        background-image: url('images/sunny.jpg');
+        background-size: 100%;
     }
     .rectangle {
         border: 1px solid #FF0000;
         position: absolute;
     }
-    .hotspot{
-      position: absolute;
-      box-shadow: inset 0px 0px 10px black;
-    }
+    .hotspot:hover{
 
+    }
     </style>
 
 
 
     <script type='text/javascript'>
     //<![CDATA[ 
+    function createHotspot(rect) {
+        divNew = document.createElement('div')
+        divNew.className = 'hotspot'
+        divNew.style.position = "absolute"
+        divNew.style.left = rect.style.left
+        divNew.style.top = rect.style.top
+        console.log(rect.style.top + " this")
+
+        divNew.style.width = rect.style.width
+        divNew.style.height = rect.style.height
+        divNew.style.boxShadow = " 0px 0px 10px black"
+        divNew.style.border = "2px solid rgba(0, 0, 0, 0.5)"
+
+        canvas.appendChild(divNew)
+    }
+    function checkHover(mouse)
+    {
+        console.log(mouse.x)
+    }
     window.onload = function() {
             initDraw(document.getElementById('canvas'));
+
             function initDraw(canvas) {
                 function setMousePosition(e) {
                     var ev = e || window.event; //Moz || IE
@@ -55,6 +75,7 @@
                 canvas.onmousemove = function(e) {
                     setMousePosition();
                     if (element !== null) {
+                        checkHover(mouse)
                         element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
                         element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
                         element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px';
@@ -67,22 +88,10 @@
                         // alert(element)
                         rect = document.getElementsByClassName("rectangle")[0]
                         left = rect.style.left
-                        
+
                         width = rect.style.width
                         height = rect.style.height
-                        divNew = document.createElement('div')
-                        divNew.className = 'hostspot'
-                        divNew.style.position="absolute"
-                        divNew.style.left = left
-                        divNew.style.top = rect.style.top
-                        console.log(rect.style.top+" this")
-                        
-                        divNew.style.width = width
-                        divNew.style.height = height
-                        divNew.style.boxShadow= " 0px 0px 10px black"
-                        divNew.style.border = "2px solid black"
-
-                        canvas.appendChild(divNew)
+                        createHotspot(rect)
                         canvas.removeChild(rect)
                         element = null;
                         canvas.style.cursor = "default";
@@ -92,6 +101,7 @@
                         console.log("begun.");
                         mouse.startX = mouse.x;
                         mouse.startY = mouse.y;
+                        
                         element = document.createElement('div');
                         element.className = 'rectangle'
                         element.style.left = mouse.x + 'px';
