@@ -1,0 +1,20 @@
+  ul{
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    overflow: scroll;
+    padding-left: 0;
+    position: absolute;
+    top: 0;
+    left:0;
+    display: none;
+    
+  }
+  ul li{
+    list-style: none;
+    padding: 4px 0 4px 0;
+    background-color: ;
+    margin-bottom: 1px;
+    text-align: center;
+
+  }

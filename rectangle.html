@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title> - jsFiddle demo</title>
-
+ <link rel="stylesheet" type="text/css" href="style.css">
 
 
 
@@ -72,6 +72,7 @@
                 };
                 var element = null;
                 var divNew = null;
+                  var dropdown = null;
                 canvas.onmousemove = function(e) {
                     setMousePosition();
                     if (element !== null) {
@@ -82,6 +83,8 @@
                         element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
                     }
                 }
+                 dropdown = document.getElementById('dropdown');
+       
 
                 canvas.onclick = function(e) {
                     if (element !== null) {
@@ -93,6 +96,10 @@
                         height = rect.style.height
                         createHotspot(rect)
                         canvas.removeChild(rect)
+                        dropdown.style.top = parseInt(rect.style.top, 10)+parseInt(rect.style.height, 10)+"px";
+                        dropdown.style.left = parseInt(rect.style.left, 10)+parseInt(rect.style.width, 10)+"px";
+                        dropdown.style.display='block';
+
                         element = null;
                         canvas.style.cursor = "default";
                         console.log("finsihed.");
@@ -119,7 +126,15 @@
 
 <body>
     <div id="canvas"></div>
-
+<ul id="dropdown">
+  <li id="img1">hello1</li>
+  <li id="img2">hello2</li>
+  <li id="img3">hello3</li>
+  <li id="img4">hello4</li>
+  <li id="img5">hello5</li>
+  <li id="img6">hello6</li>
+  <li id="img7">hello7</li>
+</ul>
 </body>
 
 
