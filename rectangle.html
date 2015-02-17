@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title> - jsFiddle demo</title>
+
+
+
+
+
+    <style type='text/css'>
+    #canvas {
+        width: 2000px;
+        height: 2000px;
+        border: 10px solid transparent;
+    }
+    .rectangle {
+        border: 1px solid #FF0000;
+        position: absolute;
+    }
+    .hotspot{
+      position: absolute;
+      box-shadow: inset 0px 0px 10px black;
+    }
+
+    </style>
+
+
+
+    <script type='text/javascript'>
+    //<![CDATA[ 
+    window.onload = function() {
+            initDraw(document.getElementById('canvas'));
+            function initDraw(canvas) {
+                function setMousePosition(e) {
+                    var ev = e || window.event; //Moz || IE
+                    if (ev.pageX) { //Moz
+                        mouse.x = ev.pageX + window.pageXOffset;
+                        mouse.y = ev.pageY + window.pageYOffset;
+                    } else if (ev.clientX) { //IE
+                        mouse.x = ev.clientX + document.body.scrollLeft;
+                        mouse.y = ev.clientY + document.body.scrollTop;
+                    }
+                };
+
+                var mouse = {
+                    x: 0,
+                    y: 0,
+                    startX: 0,
+                    startY: 0
+                };
+                var element = null;
+                var divNew = null;
+                canvas.onmousemove = function(e) {
+                    setMousePosition();
+                    if (element !== null) {
+                        element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
+                        element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
+                        element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px';
+                        element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
+                    }
+                }
+
+                canvas.onclick = function(e) {
+                    if (element !== null) {
+                        // alert(element)
+                        rect = document.getElementsByClassName("rectangle")[0]
+                        left = rect.style.left
+                        
+                        width = rect.style.width
+                        height = rect.style.height
+                        divNew = document.createElement('div')
+                        divNew.className = 'hostspot'
+                        divNew.style.position="absolute"
+                        divNew.style.left = left
+                        divNew.style.top = rect.style.top
+                        console.log(rect.style.top+" this")
+                        
+                        divNew.style.width = width
+                        divNew.style.height = height
+                        divNew.style.boxShadow= " 0px 0px 10px black"
+                        divNew.style.border = "2px solid black"
+
+                        canvas.appendChild(divNew)
+                        canvas.removeChild(rect)
+                        element = null;
+                        canvas.style.cursor = "default";
+                        console.log("finsihed.");
+
+                    } else {
+                        console.log("begun.");
+                        mouse.startX = mouse.x;
+                        mouse.startY = mouse.y;
+                        element = document.createElement('div');
+                        element.className = 'rectangle'
+                        element.style.left = mouse.x + 'px';
+                        element.style.top = mouse.y + 'px';
+                        canvas.appendChild(element)
+                        canvas.style.cursor = "crosshair";
+                    }
+                }
+            }
+        } //]]>
+    </script>
+
+
+</head>
+
+<body>
+    <div id="canvas"></div>
+
+</body>
+
+
+</html>
