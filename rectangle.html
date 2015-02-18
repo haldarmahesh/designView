@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title> - jsFiddle demo</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="dragdrop.js"></script>
+    <style type='text/css'>
+        #canvas {
+            width: 700px;
+            height: 700px;
+            border: 10px solid transparent;
+            background-image: url('images/sunny.jpg');
+            background-size: 100%;
+        }
+        .rectangle {
+            border: 1px solid #FF0000;
+            position: absolute;
+        }
+        .hotspot:hover{
+
+        }
+    </style>
+
+
+
+    <script type='text/javascript'>
+    //<![CDATA[ 
+    function createHotspot(rect) {
+        divNew = document.createElement('div')
+        divNew.className = 'hotspot'
+        divNew.style.position = "absolute"
+        divNew.style.left = rect.style.left
+        divNew.style.top = rect.style.top
+        console.log(rect.style.top + " this")
+
+        divNew.style.width = rect.style.width
+        divNew.style.height = rect.style.height
+        divNew.style.boxShadow = " 0px 0px 10px black"
+        divNew.style.border = "2px solid rgba(0, 0, 0, 0.5)"
+
+        canvas.appendChild(divNew)
+    }
+    function checkHover(mouse)
+    {
+        console.log(mouse.x)
+    }
+    window.onload = function() {
+        initDraw(document.getElementById('canvas'));
+
+        function initDraw(canvas) {
+            function setMousePosition(e) {
+                    var ev = e || window.event; //Moz || IE
+                    if (ev.pageX) { //Moz
+                        mouse.x = ev.pageX + window.pageXOffset;
+                        mouse.y = ev.pageY + window.pageYOffset;
+                    } else if (ev.clientX) { //IE
+                        mouse.x = ev.clientX + document.body.scrollLeft;
+                        mouse.y = ev.clientY + document.body.scrollTop;
+                    }
+                };
+
+                var mouse = {
+                    x: 0,
+                    y: 0,
+                    startX: 0,
+                    startY: 0
+                };
+                var element = null;
+                var divNew = null;
+                var dropdown = null;
+                canvas.onmousemove = function(e) {
+                    setMousePosition();
+                    if (element !== null) {
+                        checkHover(mouse)
+                        element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
+                        element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
+                        element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px';
+                        element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
+                    }
+                }
+                dropdown = document.getElementById('dropdown');
+
+
+                canvas.onclick = function(e) {
+                    if (element !== null) {
+                        // alert(element)
+                        rect = document.getElementsByClassName("rectangle")[0]
+                        left = rect.style.left
+
+                        width = rect.style.width
+                        height = rect.style.height
+                        createHotspot(rect)
+                        canvas.removeChild(rect)
+                        dropdown.style.top = parseInt(rect.style.top, 10)+parseInt(rect.style.height, 10)+"px";
+                        dropdown.style.left = parseInt(rect.style.left, 10)+parseInt(rect.style.width, 10)+"px";
+                        dropdown.style.display='block';
+
+                        element = null;
+                        canvas.style.cursor = "default";
+                        console.log("finsihed.");
+
+                    } else {
+                        console.log("begun.");
+                        mouse.startX = mouse.x;
+                        mouse.startY = mouse.y;
+                        dropdown.style.display='none'
+                        element = document.createElement('div');
+                        element.className = 'rectangle'
+                        element.style.left = mouse.x + 'px';
+                        element.style.top = mouse.y + 'px';
+                        canvas.appendChild(element)
+                        canvas.style.cursor = "crosshair";
+                    }
+                }
+            }
+        } //]]>
+    </script>
+
+
+</head>
+
+<body>
+    <div id="canvas"></div>
+    <ul id="dropdown">
+      <li id="img1" onclick="setTaggedImage(0);"><img src="images/sunny.jpg" /><p>hello0</p></li>
+      <li id="img2" onclick="setTaggedImage(1);"><img src="images/sunny.jpg" /><p>hello1</p></li>
+      <li id="img3" onclick="setTaggedImage(2);"><img src="images/sunny.jpg" /><p>hello2</p></li>
+      <li id="img4" onclick="setTaggedImage(3);"><img src="images/sunny.jpg" /><p>hello3</p></li>
+      <li id="img5" onclick="setTaggedImage(4);"><img src="images/sunny.jpg" /><p>hello4</p></li>
+      <li id="img6" onclick="setTaggedImage(5);"><img src="images/sunny.jpg" /><p>hello5</p></li>
+      <li id="img7" onclick="setTaggedImage(6);"><img src="images/sunny.jpg" /><p>hello6</p></li>
+  </ul>
+</body>
+
+
+</html>
