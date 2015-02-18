@@ -1,9 +1,16 @@
 var element = null;
 
+function wrongHotspot(hotspotLength) {
+    // console.log(hotspotLength)
+    alert("This is overlapping and is not allowed")
+    document.getElementsByClassName("hotspot")[hotspotLength - 1].remove()
+
+}
+
 function escapeKey(e) {
-    if (!document.getElementsByClassName("rectangle")[0])
-        console.log("yes")
-    else {
+    if (document.getElementsByClassName("rectangle")[0])
+    // console.log("yes")
+    {
         if (e.keyCode == 27) {
             element = null
             canvas.style.cursor = "default";
@@ -19,7 +26,7 @@ function createHotspot(rect) {
     divNew.style.position = "absolute"
     divNew.style.left = rect.style.left
     divNew.style.top = rect.style.top
-    console.log(rect.style.top + " this")
+        // console.log(rect.style.top + " this")
 
     divNew.style.width = rect.style.width
     divNew.style.height = rect.style.height
@@ -27,10 +34,48 @@ function createHotspot(rect) {
 }
 
 function checkHover(rect) {
-    console.log(rect.style.top + " top")
-    console.log(rect.style.left + " left")
-    console.log(rect.style.width + " width")
-    console.log(rect.style.height + " height")
+
+
+    var hotspot = document.getElementsByClassName("hotspot")
+    if (hotspot.length > 1) {
+        var currentElement = hotspot[hotspot.length - 1]
+        currentTop = parseInt(currentElement.style.top)
+        currentLeft = parseInt(currentElement.style.left)
+        currentWidth = parseInt(currentElement.style.width)
+        currentHeight = parseInt(currentElement.style.height)
+
+        // console.log(currentElement)
+        for (var i = 0; i < hotspot.length - 1; i++) {
+            thisTop = parseInt(hotspot[i].style.top)
+            thisLeft = parseInt(hotspot[i].style.left)
+            thisWidth = parseInt(hotspot[i].style.width)
+            thisHeight = parseInt(hotspot[i].style.height)
+
+            if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft > thisLeft) && (currentLeft < thisLeft + thisWidth))
+            //          726            > 350          &&          376           <   520   &&      254     >  526      && (492         < 1016)
+            
+            //          506            > 388       &&          124               <   964   &&      492     >  678      && (492         < 1016)
+
+            //          548             > 100       &&          548               <   310                   &&      544     >  130      && (544         < 810)
+            {
+                wrongHotspot(hotspot.length)
+            } else if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft + currentWidth > thisLeft) && (currentLeft + currentWidth < thisLeft + thisWidth)) {
+            //          506            > 388       &&          124               <   964             &&                    1136     >  526      && (1136         < 942)
+              
+                wrongHotspot(hotspot.length)
+            }
+            else if ((currentTop > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft + currentWidth > thisLeft) && (currentLeft + currentWidth < thisLeft + thisWidth))
+             {
+            //          506            > 388       &&          124               <   964             &&                    1136     >  526      && (1136         < 942)
+              
+                wrongHotspot(hotspot.length)
+            } 
+            else {
+                console.log("This is right")
+            }
+            // else if()
+        };
+    }
 
 }
 window.onload = function() {
@@ -74,16 +119,17 @@ window.onload = function() {
                     width = rect.style.width
                     height = rect.style.height
 
-                    checkHover(document.getElementsByClassName("rectangle")[0])
-
                     createHotspot(rect)
                     canvas.removeChild(rect)
                     element = null;
                     canvas.style.cursor = "default";
-                    console.log("finsihed.");
+                    // console.log("finsihed.");
+                    checkHover()
+
+
 
                 } else {
-                    console.log("begun.");
+                    // console.log("begun.");
                     mouse.startX = mouse.x;
                     mouse.startY = mouse.y;
 
