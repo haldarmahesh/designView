@@ -52,28 +52,19 @@ function checkHover(rect) {
             thisHeight = parseInt(hotspot[i].style.height)
 
             if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft > thisLeft) && (currentLeft < thisLeft + thisWidth))
-            //          726            > 350          &&          376           <   520   &&      254     >  526      && (492         < 1016)
-            
-            //          506            > 388       &&          124               <   964   &&      492     >  678      && (492         < 1016)
-
-            //          548             > 100       &&          548               <   310                   &&      544     >  130      && (544         < 810)
             {
                 wrongHotspot(hotspot.length)
             } else if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft + currentWidth > thisLeft) && (currentLeft + currentWidth < thisLeft + thisWidth)) {
-            //          506            > 388       &&          124               <   964             &&                    1136     >  526      && (1136         < 942)
-              
                 wrongHotspot(hotspot.length)
-            }
-            else if ((currentTop > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft + currentWidth > thisLeft) && (currentLeft + currentWidth < thisLeft + thisWidth))
-             {
-            //          506            > 388       &&          124               <   964             &&                    1136     >  526      && (1136         < 942)
-              
+            } else if ((currentTop > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
                 wrongHotspot(hotspot.length)
-            } 
-            else {
+            } else if ((currentTop + currentHeight > thisTop) && (currentTop + currentHeight < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
+                wrongHotspot(hotspot.length)
+            } else if ((currentTop < thisTop) && (currentTop +currentHeight > thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
+                wrongHotspot(hotspot.length)
+            } else {
                 console.log("This is right")
             }
-            // else if()
         };
     }
 
