@@ -4,26 +4,23 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title> - jsFiddle demo</title>
- <link rel="stylesheet" type="text/css" href="style.css">
-
-
-
-
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="dragdrop.js"></script>
     <style type='text/css'>
-    #canvas {
-        width: 2000px;
-        height: 2000px;
-        border: 10px solid transparent;
-        background-image: url('images/sunny.jpg');
-        background-size: 100%;
-    }
-    .rectangle {
-        border: 1px solid #FF0000;
-        position: absolute;
-    }
-    .hotspot:hover{
+        #canvas {
+            width: 700px;
+            height: 700px;
+            border: 10px solid transparent;
+            background-image: url('images/sunny.jpg');
+            background-size: 100%;
+        }
+        .rectangle {
+            border: 1px solid #FF0000;
+            position: absolute;
+        }
+        .hotspot:hover{
 
-    }
+        }
     </style>
 
 
@@ -50,10 +47,10 @@
         console.log(mouse.x)
     }
     window.onload = function() {
-            initDraw(document.getElementById('canvas'));
+        initDraw(document.getElementById('canvas'));
 
-            function initDraw(canvas) {
-                function setMousePosition(e) {
+        function initDraw(canvas) {
+            function setMousePosition(e) {
                     var ev = e || window.event; //Moz || IE
                     if (ev.pageX) { //Moz
                         mouse.x = ev.pageX + window.pageXOffset;
@@ -72,7 +69,7 @@
                 };
                 var element = null;
                 var divNew = null;
-                  var dropdown = null;
+                var dropdown = null;
                 canvas.onmousemove = function(e) {
                     setMousePosition();
                     if (element !== null) {
@@ -83,8 +80,8 @@
                         element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
                     }
                 }
-                 dropdown = document.getElementById('dropdown');
-       
+                dropdown = document.getElementById('dropdown');
+
 
                 canvas.onclick = function(e) {
                     if (element !== null) {
@@ -108,7 +105,7 @@
                         console.log("begun.");
                         mouse.startX = mouse.x;
                         mouse.startY = mouse.y;
-                        
+                        dropdown.style.display='none'
                         element = document.createElement('div');
                         element.className = 'rectangle'
                         element.style.left = mouse.x + 'px';
@@ -126,15 +123,15 @@
 
 <body>
     <div id="canvas"></div>
-<ul id="dropdown">
-  <li id="img1">hello1</li>
-  <li id="img2">hello2</li>
-  <li id="img3">hello3</li>
-  <li id="img4">hello4</li>
-  <li id="img5">hello5</li>
-  <li id="img6">hello6</li>
-  <li id="img7">hello7</li>
-</ul>
+    <ul id="dropdown">
+      <li id="img1" onclick="setTaggedImage(0);"><img src="images/sunny.jpg" /><p>hello0</p></li>
+      <li id="img2" onclick="setTaggedImage(1);"><img src="images/sunny.jpg" /><p>hello1</p></li>
+      <li id="img3" onclick="setTaggedImage(2);"><img src="images/sunny.jpg" /><p>hello2</p></li>
+      <li id="img4" onclick="setTaggedImage(3);"><img src="images/sunny.jpg" /><p>hello3</p></li>
+      <li id="img5" onclick="setTaggedImage(4);"><img src="images/sunny.jpg" /><p>hello4</p></li>
+      <li id="img6" onclick="setTaggedImage(5);"><img src="images/sunny.jpg" /><p>hello5</p></li>
+      <li id="img7" onclick="setTaggedImage(6);"><img src="images/sunny.jpg" /><p>hello6</p></li>
+  </ul>
 </body>
 
 
