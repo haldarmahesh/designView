@@ -1,0 +1,16 @@
+#canvas {
+        width: 2000px;
+        height: 2000px;
+        border: 10px solid transparent;
+        background-image: url('../images/sunny.jpg');
+        background-size: 100%;
+    }
+    .rectangle {
+        border: 1px solid #FF0000;
+        position: absolute;
+    }
+    .hotspot
+    {
+        resize:both;
+    }
+    
