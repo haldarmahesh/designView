@@ -1,5 +1,7 @@
 app.dom = function() {
 
+    var hotspotcounter = 0;
+
     var addhotspotdom = function(canvas, object) {
         divNew = document.createElement('div');
         divNew.className = "hotspot";
