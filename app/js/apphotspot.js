@@ -2,7 +2,7 @@
 app.hotspot = (function(){
 
 var createHotspot = function() {
-    rect = document.getElementById('rect')
+    rect = app.dom.getNodeById('rect');
     var hotSpotData = {
         top: parseInt(rect.style.top),
         left: parseInt(rect.style.left),
@@ -65,12 +65,7 @@ var escapeKey = function(e) {
 };
 
 
-var removeHotspot = function(){
-    if(element)
-    {
-        console.log("dddd")
-    }
-};
+
 
 
 return {
@@ -78,7 +73,6 @@ return {
 
     createHotspot: createHotspot,
     checkOverlap:checkOverlap,
-    removeHotspot:removeHotspot,
     dragStart:dragStart,
     escapeKey:escapeKey
 
