@@ -1,8 +1,8 @@
-app.dom = function() {
+app.dom = function () {
 
-  var addhotspotdom = function(canvas, object) {
+  var addhotspotdom = function (canvas, object) {
     divNew = document.createElement('div');
-    divNew.className = "hotspot";
+    divNew.className = 'hotspot';
     divNew.setAttribute('id', 'hotspot' + hotspotcounter);
     divNew.setAttribute('draggable', 'true');
     divNew.setAttribute('ondragstart', 'dragStart(this)');
@@ -11,41 +11,41 @@ app.dom = function() {
     divNew.style.width = object.width + "px";
     divNew.style.height = object.height + "px";
     img = document.createElement('img');
-    img.setAttribute('src', 'images/close.png')
-    img.setAttribute('onclick', "app.dom.deletehotspotdom(" + "'hotspot" + hotspotcounter + "')")
+    img.setAttribute('src', 'images/close.png');
+    img.setAttribute('onclick', "app.dom.deletehotspotdom(" + "'hotspot" + hotspotcounter + "')");
     hotspotcounter++;
-    divNew.appendChild(img)
+    divNew.appendChild(img);
 
 
     canvas.appendChild(divNew);
 
     if (app.hotspot.checkOverlap()) {
       alert("This is overlapping, not allowed");
-      hotspot = document.getElementsByClassName("hotspot")
-      hotspot[hotspot.length - 1].remove()
+      hotspot = document.getElementsByClassName("hotspot");
+      hotspot[hotspot.length - 1].remove();
     }
   };
 
-  var deletehotspotdom = function(hotspot) {
+  var deletehotspotdom = function (hotspot) {
     var con = confirm("Do you want to delete this??");
     if (con) {
-      element = null
+      element = null;
       document.getElementById(hotspot).remove();
       document.getElementById("rect").remove();
     } else {
-      element = null
+      element = null;
       document.getElementById("rect").remove();
     }
 
   };
 
   var deleterectangledom = function(canvas, objectID) {
-    re = document.getElementById(objectID)
+    re = document.getElementById(objectID);
     canvas.removeChild(re);
   };
 
 
-  var getNodeById = function(objectID) {
+  var getNodeById = function (objectID) {
     return document.getElementById(objectID);
   };
 
@@ -59,11 +59,11 @@ app.dom = function() {
 
   var createRectangle = function(canvas, x, y) {
     element = document.createElement('div');
-    element.className = 'rectangle'
-    element.setAttribute('id', 'rect')
+    element.className = 'rectangle';
+    element.setAttribute('id', 'rect');
     element.style.left = x + 'px';
     element.style.top = y + 'px';
-    canvas.appendChild(element)
+    canvas.appendChild(element);
 
 
   };
@@ -74,6 +74,6 @@ app.dom = function() {
     createRectangle: createRectangle,
     deleterectangledom: deleterectangledom,
     deletehotspotdom: deletehotspotdom
-  }
+  };
 
 }();
