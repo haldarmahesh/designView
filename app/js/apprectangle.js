@@ -36,9 +36,11 @@ app.rectangle = (function() {
         var object = app.hotspot.createHotspot(canvas)
         app.dom.addhotspotdom(canvas, object)
         app.dom.deleterectangledom(canvas, 'rect');
-        app.dom.showDropDown(parseInt(rect.style.top, 10)+parseInt(rect.style.height, 10)+"px",parseInt(rect.style.left, 10)+parseInt(rect.style.width, 10)+"px");
         element = null;
-        app.hotspot.checkOverlap();
+        var overlapped = app.hotspot.checkOverlap();
+        if(overlapped == false){
+          app.dom.showDropDown(parseInt(rect.style.top, 10)+parseInt(rect.style.height, 10)+"px",parseInt(rect.style.left, 10)+parseInt(rect.style.width, 10)+"px");
+        }
       } else {
         mouse.startX = mouse.x;
         mouse.startY = mouse.y;

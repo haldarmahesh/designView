@@ -79,6 +79,11 @@ var showDropDown = function(top,left){
 
 }
 
+var getAllhotspots = function(canvas)
+{
+  return document.getElementsByClassName("hotspot");
+}
+
 
   return {
     showDropDown :showDropDown,
@@ -89,7 +94,8 @@ var showDropDown = function(top,left){
     createRectangle: createRectangle,
     deleterectangledom: deleterectangledom,
     deletehotspotdom: deletehotspotdom,
-    getNodesByClass : getNodesByClass
+    getNodesByClass : getNodesByClass,
+    getAllhotspots : getAllhotspots
   }
 
 }();

@@ -13,14 +13,14 @@ var createHotspot = function() {
 };
 
 var checkOverlap= function() {
-    var hotspot = document.getElementsByClassName("hotspot")
+    var hotspot = app.dom.getAllhotspots();
     if (hotspot.length > 1) {
         var currentElement = hotspot[hotspot.length - 1]
         currentTop = parseInt(currentElement.style.top)
         currentLeft = parseInt(currentElement.style.left)
         currentWidth = parseInt(currentElement.style.width)
         currentHeight = parseInt(currentElement.style.height)
-
+       
         for (var i = 0; i < hotspot.length - 1; i++) {
             thisTop = parseInt(hotspot[i].style.top)
             thisLeft = parseInt(hotspot[i].style.left)
@@ -41,7 +41,9 @@ var checkOverlap= function() {
                 return false
             }
         }
+
     }
+    return false;
 
 };
 
