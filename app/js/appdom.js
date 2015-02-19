@@ -63,9 +63,26 @@ app.dom = function() {
     element.style.top = y + 'px';
     canvas.appendChild(element)
    
-
   };
+
+var hideDropDown = function(){
+  var drop = document.getElementById('dropdown');
+  drop.style.display = 'none';
+
+}
+
+var showDropDown = function(top,left){
+  var drop = document.getElementById('dropdown');
+  drop.style.left = left;
+  drop.style.top = top;
+  drop.style.display = 'block';
+
+}
+
+
   return {
+    showDropDown :showDropDown,
+    hideDropDown : hideDropDown,
     getNodeById: getNodeById,
     addhotspotdom: addhotspotdom,
     setRectangle: setRectangle,

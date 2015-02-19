@@ -1,5 +1,5 @@
 
-app.hotspot = (function(){
+app.hotspot = function(){
 
 var createHotspot = function() {
     rect = app.dom.getNodeById('rect');
@@ -65,12 +65,15 @@ var escapeKey = function(e) {
 };
 
 
-
+var setTagOnHotspot = function(selected_index){
+    app.dom.hideDropDown();
+    alert("selected_index "+selected_index);
+}
 
 
 return {
 
-
+    setTagOnHotspot : setTagOnHotspot,
     createHotspot: createHotspot,
     checkOverlap:checkOverlap,
     dragStart:dragStart,
@@ -80,4 +83,4 @@ return {
 }
 
 
-})();
+}();
