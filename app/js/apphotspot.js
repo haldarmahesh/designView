@@ -52,13 +52,13 @@ var dragStart = function(event)
 
 
 var escapeKey = function(e) {
-    if (document.getElementsByClassName("rectangle")[0])
+    if (app.dom.getNodesByClass('rectangle')[0])
     // console.log("yes")
     {
         if (e.keyCode == 27) {
             element = null
             canvas.style.cursor = "default";
-            document.getElementsByClassName("rectangle")[0].remove()
+            app.dom.getNodesByClass('rectangle')[0].remove()
         }
     }
 

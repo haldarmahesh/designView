@@ -42,6 +42,11 @@ app.dom = function() {
     return document.getElementById(objectID);
   };
 
+  var getNodesByClass = function(objectClass)
+  {
+    return document.getElementsByClassName(objectClass);
+  }
+
   var setRectangle = function(width, height, left, top) {
     var rect = document.getElementById('rect');
     rect.style.width = width;
@@ -66,7 +71,8 @@ app.dom = function() {
     setRectangle: setRectangle,
     createRectangle: createRectangle,
     deleterectangledom: deleterectangledom,
-    deletehotspotdom: deletehotspotdom
+    deletehotspotdom: deletehotspotdom,
+    getNodesByClass : getNodesByClass
   }
 
 }();
