@@ -4,6 +4,7 @@ app.rectangle = (function() {
         createRectangle(canvasdiv);
     };
 
+
     function createRectangle(canvas) {
         function setMousePosition(e) {
             var ev = e || window.event; //Moz || IE

@@ -1,3 +1,4 @@
+
 app.hotspot = function() {
 
     var createHotspot = function() {
@@ -20,7 +21,7 @@ app.hotspot = function() {
         currentHeight = parseInt(currentElement.style.height)
         if (hotspot.length > 1) {
 
-            console.log("calling checkOverlap")
+            //console.log('calling checkOverlap')
 
             for (var i = 0; i < hotspot.length - 1; i++) {
                 thisTop = parseInt(hotspot[i].style.top)
@@ -29,68 +30,66 @@ app.hotspot = function() {
                 thisHeight = parseInt(hotspot[i].style.height)
 
                 if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft > thisLeft) && (currentLeft < thisLeft + thisWidth)) {
-                    console.log("overlapping")
+                    //console.log('overlapping')
                     return true
 
                 } else if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft + currentWidth > thisLeft) && (currentLeft + currentWidth < thisLeft + thisWidth)) {
-                    console.log("overlapping")
+                    //console.log('overlapping')
                     return true
 
                 } else if ((currentTop > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
-                    console.log("overlapping")
+                    //console.log('overlapping')
                     return true
 
                 } else if ((currentTop + currentHeight > thisTop) && (currentTop + currentHeight < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
-                    console.log("overlapping")
+                    //console.log('overlapping')
                     return true
 
                 } else if ((currentTop < thisTop) && (currentTop + currentHeight > thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
-                    console.log("overlapping")
+                   // console.log('overlapping')
                     return true
 
                 } else {
-                    console.log("not overlapping")
-                    app.dom.showDropDown(currentTop + "px", currentLeft + "px");
-
-                    return false
-
+                    //console.log('not overlapping')
+                    app.dom.showDropDown(currentTop + 'px', currentLeft + 'px');
+                    return false;
 
                 }
             }
 
         } else {
-            console.log("not overlapping")
-            app.dom.showDropDown(currentTop + "px", currentLeft + "px");
-
-            return false
+            //console.log('not overlapping')
+            app.dom.showDropDown(currentTop + 'px', currentLeft + 'px');
+            return false;
         }
 
     };
 
-    var dragStart = function(event) {
-        event.dataTransfer.setData("text", event.target.id);
-    };
 
+    var dragStart = function(event) {
+        event.dataTransfer.setData('text', event.target.id);
+    };
 
     var escapeKey = function(e) {
         if (app.dom.getNodesByClass('rectangle')[0])
-        // console.log("yes")
+        // console.log('yes')
         {
             if (e.keyCode == 27) {
                 element = null
-                canvas.style.cursor = "default";
+                canvas.style.cursor = 'default';
                 app.dom.getNodesByClass('rectangle')[0].remove()
             }
         }
-
     };
+
 
     var setTagOnHotspot = function(selected_index) {
         app.dom.hideDropDown();
-        alert("selected_index " + selected_index);
+        alert('selected_index ' + selected_index);
     }
 
     return {
+
 
         setTagOnHotspot: setTagOnHotspot,
         createHotspot: createHotspot,
@@ -98,8 +97,7 @@ app.hotspot = function() {
         dragStart: dragStart,
         escapeKey: escapeKey
 
-
-    }
+  };
 
 
 }();

@@ -1,29 +1,27 @@
-app.dom = function() {
+app.dom = function () {
 
     var hotspotcounter = 0;
 
     var addhotspotdom = function(canvas, object) {
         divNew = document.createElement('div');
-        divNew.className = "hotspot";
+        divNew.className = 'hotspot';
         divNew.setAttribute('id', 'hotspot' + hotspotcounter);
         divNew.setAttribute('draggable', 'true');
         divNew.setAttribute('ondragstart', 'dragStart(this)');
-        divNew.style.top = object.top + "px";
-        divNew.style.left = object.left + "px";
-        divNew.style.width = object.width + "px";
-        divNew.style.height = object.height + "px";
+        divNew.style.top = object.top + 'px';
+        divNew.style.left = object.left + 'px';
+        divNew.style.width = object.width + 'px';
+        divNew.style.height = object.height + 'px';
         img = document.createElement('img');
         img.setAttribute('src', 'images/close.png')
         img.setAttribute('onclick', "app.dom.deletehotspotdom(" + "'hotspot" + hotspotcounter + "')")
         hotspotcounter++;
         divNew.appendChild(img)
-
-
         canvas.appendChild(divNew);
 
         if (app.hotspot.checkOverlap()) {
-            alert("This is overlapping, not allowed");
-            hotspot = document.getElementsByClassName("hotspot")
+            alert('This is overlapping, not allowed');
+            hotspot = document.getElementsByClassName('hotspot')
             hotspot[hotspot.length - 1].remove()
         }
     };
@@ -32,7 +30,7 @@ app.dom = function() {
       
             element = null
             document.getElementById(hotspot).remove();
-            document.getElementById("rect").remove();
+            document.getElementById('rect').remove();
       
     };
 
@@ -84,7 +82,7 @@ app.dom = function() {
     }
 
     var getAllhotspots = function(canvas) {
-        return document.getElementsByClassName("hotspot");
+        return document.getElementsByClassName('hotspot');
     }
 
 
@@ -100,12 +98,5 @@ app.dom = function() {
         getNodesByClass: getNodesByClass,
         getAllhotspots: getAllhotspots
     }
-
-
-
-
-
-
-
 
 }();
