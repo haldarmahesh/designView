@@ -1,7 +1,8 @@
 body{
     font-family: Helvetica;
   }
-  ul{
+  ul#dropdown{
+    z-index: 100;
     width: 150px;
     height: 100px;
     overflow: -moz-scrollbars-vertical; 
@@ -15,7 +16,7 @@ body{
     border-radius:3px;
     
   }
-  ul li{
+  ul#dropdown li{
     list-style: none;
     padding: 7px 5px 7px 5px;
     background-color:white;
@@ -25,20 +26,20 @@ body{
     position: relative;
 
   }
-  ul li img{
+  ul#dropdown li img{
     float: left;
     width: 30%;
     border:0 solid;
     border-radius: 2px; 
   }
-  ul li p{
+  ul#dropdown li p{
     float: left;
     width: 70%;
     margin:0;
     font-size: 15px;
     padding-top: 5px;
   }
-  ul li:hover{
+  ul#dropdown li:hover{
     background: rgb(14,170,254);
     color: white;
   }

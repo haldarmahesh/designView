@@ -1,0 +1,59 @@
+#drop_zone
+{
+	height: 80px;
+	width: 80px;
+	margin: 10px;
+	border: 1px solid black;
+	float: left;
+	color: grey;
+	padding: 10px;
+}
+
+.fa-plus-circle
+{
+	font-size: 30px;
+	padding: 35px;
+}
+
+img
+{
+	width: 100px;
+	
+}
+
+.preview
+{
+	overflow: hidden;
+	margin: auto;
+	margin-top: 10px;
+	width: 100%;
+	visibility: hidden;
+	clear: both;
+}
+
+.canvas
+{
+	width: 100%;
+	display: none;
+	background-repeat: no-repeat;
+	height: 600px;
+}
+
+#cross
+{
+	position: absolute;
+height: 25px;
+width: 25px;
+padding: 5px;
+display: none;
+cursor: pointer;
+}
+
+div:hover #cross{
+display: block;
+}
+
+output#list div 
+{
+	float: left;
+}
