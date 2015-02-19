@@ -79,7 +79,8 @@ return {
     createHotspot: createHotspot,
     checkOverlap:checkOverlap,
     removeHotspot:removeHotspot,
-    dragStart:dragStart
+    dragStart:dragStart,
+    escapeKey:escapeKey
 
 
 }

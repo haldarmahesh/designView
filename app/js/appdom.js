@@ -12,7 +12,7 @@ app.dom = function() {
     divNew.style.height = object.height + "px";
     img = document.createElement('img');
     img.setAttribute('src', 'images/close.png')
-    img.setAttribute('onclick', "app.dom.deleteHotspotdom(" + "'hotspot" + hotspotcounter + "')")
+    img.setAttribute('onclick', "app.dom.deletehotspotdom(" + "'hotspot" + hotspotcounter + "')")
     hotspotcounter++;
     divNew.appendChild(img)
 
@@ -26,14 +26,15 @@ app.dom = function() {
     }
   };
 
-  var deletehostspotdom = function(hotspot) {
+  var deletehotspotdom = function(hotspot) {
     element = null
     document.getElementById(hotspot).remove();
     document.getElementById("rect").remove();
   };
 
   var deleterectangledom = function(canvas, objectID) {
-    canvas.removeChild(objectID);
+    re = document.getElementById(objectID)
+    canvas.removeChild(re);
   };
 
 
@@ -41,8 +42,8 @@ app.dom = function() {
     return document.getElementById(objectID);
   };
 
-  var setRectangle = function(objectID, width, height, left, top) {
-    var rect = document.getElementById(objectID);
+  var setRectangle = function(width, height, left, top) {
+    var rect = document.getElementById('rect');
     rect.style.width = width;
     rect.style.height = height;
     rect.style.left = left;
@@ -56,7 +57,7 @@ app.dom = function() {
     element.style.left = x + 'px';
     element.style.top = y + 'px';
     canvas.appendChild(element)
-    element.setAttribute("onkeydown", "escapeKey()")
+   
 
   };
   return {
@@ -65,7 +66,7 @@ app.dom = function() {
     setRectangle: setRectangle,
     createRectangle: createRectangle,
     deleterectangledom: deleterectangledom,
-    deletehostspotdom: deletehostspotdom
+    deletehotspotdom: deletehotspotdom
   }
 
 }();

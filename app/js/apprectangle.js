@@ -31,7 +31,7 @@
         setMousePosition();
         if (element !== null) {
           
-        	app.dom.setRectangle(element,Math.abs(mouse.x - mouse.startX) + 'px',
+        	app.dom.setRectangle(Math.abs(mouse.x - mouse.startX) + 'px',
 										        	 Math.abs(mouse.y - mouse.startY) + 'px', 
 										       		(mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px',
 										        	(mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px');
