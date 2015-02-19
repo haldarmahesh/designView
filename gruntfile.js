@@ -11,12 +11,6 @@ module.exports = function (grunt) {
     usemin: {
       html: ['dist/rectangle.html']
     },
-    copy: {
-      task0: {
-        src: 'app/rectangle.html',
-        dest: 'dist/rectangle.html'
-      }
-    },
     imagemin: {
       dynamic: {
         files: [{
@@ -58,5 +52,5 @@ module.exports = function (grunt) {
 
 
   grunt.registerTask('default', ['htmlhint', 'jshint', 'csslint']);
-  grunt.registerTask('build', ['copy:task0', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'htmlmin', 'usemin']);
+  grunt.registerTask('build', ['useminPrepare','htmlmin', 'usemin']);
 };
