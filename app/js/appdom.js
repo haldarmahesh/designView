@@ -27,9 +27,16 @@ app.dom = function() {
   };
 
   var deletehotspotdom = function(hotspot) {
-    element = null
-    document.getElementById(hotspot).remove();
-    document.getElementById("rect").remove();
+    var con = confirm("Do you want to delete this??");
+    if (con) {
+      element = null
+      document.getElementById(hotspot).remove();
+      document.getElementById("rect").remove();
+    } else {
+      element = null
+      document.getElementById("rect").remove();
+    }
+
   };
 
   var deleterectangledom = function(canvas, objectID) {
@@ -57,7 +64,7 @@ app.dom = function() {
     element.style.left = x + 'px';
     element.style.top = y + 'px';
     canvas.appendChild(element)
-   
+
 
   };
   return {
