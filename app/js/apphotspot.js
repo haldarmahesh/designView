@@ -13,12 +13,14 @@ app.hotspot = function() {
 
     var checkOverlap = function() {
         var hotspot = app.dom.getAllhotspots();
+        var currentElement = hotspot[hotspot.length - 1]
+        currentTop = parseInt(currentElement.style.top)
+        currentLeft = parseInt(currentElement.style.left)
+        currentWidth = parseInt(currentElement.style.width)
+        currentHeight = parseInt(currentElement.style.height)
         if (hotspot.length > 1) {
-            var currentElement = hotspot[hotspot.length - 1]
-            currentTop = parseInt(currentElement.style.top)
-            currentLeft = parseInt(currentElement.style.left)
-            currentWidth = parseInt(currentElement.style.width)
-            currentHeight = parseInt(currentElement.style.height)
+
+            console.log("calling checkOverlap")
 
             for (var i = 0; i < hotspot.length - 1; i++) {
                 thisTop = parseInt(hotspot[i].style.top)
@@ -27,22 +29,41 @@ app.hotspot = function() {
                 thisHeight = parseInt(hotspot[i].style.height)
 
                 if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft > thisLeft) && (currentLeft < thisLeft + thisWidth)) {
+                    console.log("overlapping")
                     return true
+
                 } else if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft + currentWidth > thisLeft) && (currentLeft + currentWidth < thisLeft + thisWidth)) {
+                    console.log("overlapping")
                     return true
+
                 } else if ((currentTop > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
+                    console.log("overlapping")
                     return true
+
                 } else if ((currentTop + currentHeight > thisTop) && (currentTop + currentHeight < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
+                    console.log("overlapping")
                     return true
+
                 } else if ((currentTop < thisTop) && (currentTop + currentHeight > thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
+                    console.log("overlapping")
                     return true
+
                 } else {
+                    console.log("not overlapping")
+                    app.dom.showDropDown(currentTop + "px", currentLeft + "px");
+
                     return false
+
+
                 }
             }
 
+        } else {
+            console.log("not overlapping")
+            app.dom.showDropDown(currentTop + "px", currentLeft + "px");
+
+            return false
         }
-        return false;
 
     };
 

@@ -27,9 +27,11 @@ app.dom = function() {
     };
 
     var deletehotspotdom = function(hotspot) {
-        element = null
-        document.getElementById(hotspot).remove();
-        document.getElementById("rect").remove();
+      
+            element = null
+            document.getElementById(hotspot).remove();
+            document.getElementById("rect").remove();
+      
     };
 
     var deleterectangledom = function(canvas, objectID) {
@@ -45,6 +47,7 @@ app.dom = function() {
     var getNodesByClass = function(objectClass) {
         return document.getElementsByClassName(objectClass);
     }
+
 
     var setRectangle = function(width, height, left, top) {
         var rect = document.getElementById('rect');
@@ -95,5 +98,12 @@ app.dom = function() {
         getNodesByClass: getNodesByClass,
         getAllhotspots: getAllhotspots
     }
+
+
+
+
+
+
+
 
 }();
