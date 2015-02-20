@@ -86,6 +86,7 @@ app.hotspot = function() {
 
     var setTagOnHotspot = function(selected_index) {
         app.dom.hideDropDown();
+        console.log("mmmasmmas"+selected_index)
         alert('selected_index ' + selected_index);
     }
 
@@ -95,7 +96,8 @@ app.hotspot = function() {
         var length = document.getElementById('list').childNodes.length;
         var li_element = document.createElement('li');
         li_element.setAttribute('id',image_name+'list');
-        li_element.setAttribute('onclick', 'app.hotspot.setTagOnHotspot(imgcount)');
+        li_element.setAttribute('onclick', "app.hotspot.setTagOnHotspot('"+image_name+"')");
+
         li_element.innerHTML = image_name;
         parent.appendChild(li_element);
         imgcount++;
