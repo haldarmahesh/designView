@@ -89,14 +89,14 @@ app.hotspot = function() {
         alert('selected_index ' + selected_index);
     }
 
-    var createList = function()
+    var createList = function(image_name)
     {
         var parent = document.getElementById('dropdown');
         var length = document.getElementById('list').childNodes.length;
         var li_element = document.createElement('li');
-        li_element.setAttribute('id','img'+(imgcount+1));
+        li_element.setAttribute('id',image_name+'list');
         li_element.setAttribute('onclick', 'app.hotspot.setTagOnHotspot(imgcount)');
-        li_element.innerHTML = "image"+(imgcount+1);
+        li_element.innerHTML = image_name;
         parent.appendChild(li_element);
         imgcount++;
     }

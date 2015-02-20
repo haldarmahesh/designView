@@ -24,7 +24,7 @@ function addImage(object)
   div.appendChild(image);
   listTag.appendChild(div);
   preview.appendChild(canvas);
-  app.hotspot.createList();      
+  app.hotspot.createList(object.img_name);      
 }
 
 function viewImage(obj)
