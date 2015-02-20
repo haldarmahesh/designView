@@ -22,7 +22,7 @@ function addImage(object)
   div.setAttribute('id', object.img_name+"div");
   cross.setAttribute('onclick', "deletePic('"+object.img_name+"')");
   canvas.setAttribute('id', object.img_name+"c"); 
-  canvas.setAttribute('class', 'canvas');
+  canvas.setAttribute('class', 'canvas notuploaded');
   div.appendChild(cross);
   div.appendChild(image);
   div.appendChild(titleDiv);
@@ -43,14 +43,13 @@ function viewImage(obj)
   var preview = document.getElementById('preview');
   preview.style.visibility='visible';
   var canvas = document.getElementById(obj.title+"c");
-  currentCanvas = obj.title+"c"
-  console.log("mkmkmkm"+currentCanvas)
+  currentCanvas = obj.title+"c";
   canvas.style.display='block';
   x = document.getElementById(obj.title).src;
   canvas.style.backgroundImage="url('"+x+"')";
   var saveButton = document.getElementById('save');
   // saveButton.setAttribute('onclick', "saveFile.generateURL('"+x+"' , '"+obj.title+"')") ;
-  saveButton.setAttribute('onclick', "saveFile.generateURL()") ;
+  saveButton.setAttribute('onclick', "imageFile.saveImage()") ;
 
   app.rectangle.setupTools(obj.title+"c");
 

@@ -66,13 +66,32 @@ var handleDragOver = function(evt) {
   evt.preventDefault();
   evt.dataTransfer.dropEffect = 'copy';
 }
+var saveImage =function(){
+ var x = document.getElementsByClassName("canvas");
+ var i;
+ for (i = 0; i < x.length; i++) 
+ {
+  if(x[i].classList.contains("notuploaded")){
+   x[i].classList.remove("notuploaded");
+   x[i].classList.add("uploaded");
+   var src = x[i].style.backgroundImage;
+   var name = x[i].id;
+   name = name.substring(0, name.length - 1);
+   saveFile.generateURL(src , name);
+ }
+ else
+  console.log("all files are already saved");
+}
 
- return {
-    handleFileSelect : handleFileSelect,
-    handleDragOver : handleDragOver,
-    
-  }
+}
 
+
+return {
+   handleFileSelect : handleFileSelect,
+   handleDragOver : handleDragOver,
+   saveImage : saveImage,
+   
+ }
 
 }();
 
