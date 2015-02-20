@@ -1,4 +1,4 @@
-
+var imgcount = 0;
 app.hotspot = function() {
 
     var createHotspot = function() {
@@ -89,6 +89,18 @@ app.hotspot = function() {
         alert('selected_index ' + selected_index);
     }
 
+    var createList = function()
+    {
+        var parent = document.getElementById('dropdown');
+        var length = document.getElementById('list').childNodes.length;
+        var li_element = document.createElement('li');
+        li_element.setAttribute('id','img'+(imgcount+1));
+        li_element.setAttribute('onclick', 'app.hotspot.setTagOnHotspot(imgcount)');
+        li_element.innerHTML = "image"+(imgcount+1);
+        parent.appendChild(li_element);
+        imgcount++;
+    }
+
     return {
 
 
@@ -96,7 +108,8 @@ app.hotspot = function() {
         createHotspot: createHotspot,
         checkOverlap: checkOverlap,
         dragStart: dragStart,
-        escapeKey: escapeKey
+        escapeKey: escapeKey,
+        createList: createList
 
   };
 
