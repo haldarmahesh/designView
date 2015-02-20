@@ -27,3 +27,7 @@
 .hotspot:hover img {
     display: block;
 }
+
+.hotspot p{
+    display: none;
+}

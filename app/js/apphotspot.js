@@ -52,7 +52,8 @@ app.hotspot = function() {
 
                 } else {
                     //console.log('not overlapping')
-                    app.dom.showDropDown(currentTop + 'px', currentLeft + 'px');
+                    selectedImage = app.dom.showDropDown(currentTop + 'px', currentLeft + 'px', currentElement);
+
                     return false;
 
                 }
@@ -60,7 +61,8 @@ app.hotspot = function() {
 
         } else {
             //console.log('not overlapping')
-            app.dom.showDropDown(currentTop + 'px', currentLeft + 'px');
+            selectedImage = app.dom.showDropDown(currentTop + 'px', currentLeft + 'px', currentElement);
+
             return false;
         }
 
@@ -76,7 +78,7 @@ app.hotspot = function() {
         // console.log('yes')
         {
             if (e.keyCode == 27) {
-                element = null
+                element = null;
                 canvas.style.cursor = 'default';
                 app.dom.getNodesByClass('rectangle')[0].remove()
             }
@@ -84,10 +86,18 @@ app.hotspot = function() {
     };
 
 
-    var setTagOnHotspot = function(selected_index) {
+    var setTagOnHotspot = function(selectedImage) {
         app.dom.hideDropDown();
-        console.log("mmmasmmas"+selected_index)
-        alert('selected_index ' + selected_index);
+        // var hotspotId = document.getElementById()
+        // alert('selected_index ' + selectedImage);
+        canvasNow = document.getElementById(currentCanvas);
+        hotspotNow = canvasNow.childNodes
+        var title = document.createElement('p');
+        var titleText = document.createTextNode(selectedImage)
+        title.appendChild(titleText)
+        hotspotNow[hotspotNow.length - 1].appendChild(title)
+
+
     }
 
     var createList = function(image_name)

@@ -73,7 +73,7 @@ app.dom = function() {
 
     }
 
-    var showDropDown = function(top, left) {
+    var showDropDown = function(top, left, currentHotspot) {
         var drop = document.getElementById('dropdown');
         drop.style.left = left;
         drop.style.top = top;
