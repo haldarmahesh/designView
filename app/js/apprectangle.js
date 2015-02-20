@@ -1,6 +1,5 @@
 app.rectangle = (function() {
     function setupTools(canvas) {
-      console.log(canvas);
         var canvasdiv = app.dom.getNodeById(canvas);
         createRectangle(canvasdiv);
     };

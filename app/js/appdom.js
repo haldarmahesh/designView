@@ -1,4 +1,4 @@
-app.dom = function () {
+app.dom = function() {
 
     var hotspotcounter = 0;
 
@@ -16,26 +16,26 @@ app.dom = function () {
         img.setAttribute('src', 'images/close.png')
         img.setAttribute('onclick', "app.dom.deletehotspotdom(" + "'hotspot" + hotspotcounter + "')")
         hotspotcounter++;
-        divNew.appendChild(img)
+        divNew.appendChild(img);
         canvas.appendChild(divNew);
 
-        if (app.hotspot.checkOverlap()) {
+        if (app.hotspot.checkOverlap(canvas)) {
             alert('This is overlapping, not allowed');
-            hotspot = document.getElementsByClassName('hotspot')
+            hotspot = document.getElementById(canvas.id).childNodes
             hotspot[hotspot.length - 1].remove()
         }
     };
 
     var deletehotspotdom = function(hotspot) {
-      
-            element = null
-            document.getElementById(hotspot).remove();
-            document.getElementById('rect').remove();
-      
+
+        element = null
+        document.getElementById(hotspot).remove();
+        document.getElementById('rect').remove();
+
     };
 
     var deleterectangledom = function(canvas, objectID) {
-        re = document.getElementById(objectID)
+        re = document.getElementById(objectID);
         canvas.removeChild(re);
     };
 
@@ -59,11 +59,11 @@ app.dom = function () {
 
     var createRectangle = function(canvas, x, y) {
         element = document.createElement('div');
-        element.className = 'rectangle'
-        element.setAttribute('id', 'rect')
+        element.className = 'rectangle';
+        element.setAttribute('id', 'rect');
         element.style.left = x + 'px';
         element.style.top = y + 'px';
-        canvas.appendChild(element)
+        canvas.appendChild(element);
 
     };
 
@@ -82,7 +82,13 @@ app.dom = function () {
     }
 
     var getAllhotspots = function(canvas) {
-        return document.getElementsByClassName('hotspot');
+        var id = document.getElementById(canvas.id)
+        // console.log("aaaaapp"+document.getElementById(canvas.id).childNodes[0].id)
+        
+        var canvaHotspots = document.getElementById(canvas.id).childNodes
+        // return document.getElementsByClassName('hotspot');
+        // console.log("uuuuuuu"+canvaHotspots)
+        return canvaHotspots
     }
 
 
