@@ -23,20 +23,17 @@ img
 
 .preview
 {
-	overflow: hidden;
 	margin: auto;
 	margin-top: 10px;
-	width: 100%;
 	visibility: hidden;
 	clear: both;
 }
 
 .canvas
 {
-	width: 100%;
 	display: none;
 	background-repeat: no-repeat;
-	height: 600px;
+
 }
 
 #cross
