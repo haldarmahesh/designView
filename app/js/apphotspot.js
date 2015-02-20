@@ -1,86 +1,104 @@
-app.hotspot = (function () {
 
-  var createHotspot = function () {
-    rect = document.getElementById('rect');
-    var hotSpotData = {
-      top: parseInt(rect.style.top),
-      left: parseInt(rect.style.left),
-      width: parseInt(rect.style.width),
-      height: parseInt(rect.style.height),
-    }
-    return hotSpotData;
-  };
+app.hotspot = function() {
 
-  var checkOverlap = function () {
-    var hotspot = document.getElementsByClassName("hotspot");
-    if (hotspot.length > 1) {
-      var currentElement = hotspot[hotspot.length - 1];
-      currentTop = parseInt(currentElement.style.top);
-      currentLeft = parseInt(currentElement.style.left);
-      currentWidth = parseInt(currentElement.style.width);
-      currentHeight = parseInt(currentElement.style.height);
-
-      for (var i = 0; i < hotspot.length - 1; i++) {
-        thisTop = parseInt(hotspot[i].style.top);
-        thisLeft = parseInt(hotspot[i].style.left);
-        thisWidth = parseInt(hotspot[i].style.width);
-        thisHeight = parseInt(hotspot[i].style.height);
-
-        if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft > thisLeft) && (currentLeft < thisLeft + thisWidth)) {
-          return true;
-        } else if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft + currentWidth > thisLeft) && (currentLeft + currentWidth < thisLeft + thisWidth)) {
-          return true;
-        } else if ((currentTop > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
-          return true;
-        } else if ((currentTop + currentHeight > thisTop) && (currentTop + currentHeight < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
-          return true;
-        } else if ((currentTop < thisTop) && (currentTop + currentHeight > thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
-          return true;
-        } else {
-          return false;
+    var createHotspot = function() {
+        rect = app.dom.getNodeById('rect');
+        var hotSpotData = {
+            top: parseInt(rect.style.top),
+            left: parseInt(rect.style.left),
+            width: parseInt(rect.style.width),
+            height: parseInt(rect.style.height)
         }
-      }
+        return hotSpotData;
+    };
+
+    var checkOverlap = function(canvas) {
+        console.log(canvas.id);
+        var hotspot = app.dom.getAllhotspots(canvas);
+        var currentElement = hotspot[hotspot.length - 1]
+        currentTop = parseInt(currentElement.style.top)
+        currentLeft = parseInt(currentElement.style.left)
+        currentWidth = parseInt(currentElement.style.width)
+        currentHeight = parseInt(currentElement.style.height)
+        if (hotspot.length > 1) {
+
+            //console.log('calling checkOverlap')
+
+            for (var i = 0; i < hotspot.length - 1; i++) {
+                thisTop = parseInt(hotspot[i].style.top)
+                thisLeft = parseInt(hotspot[i].style.left)
+                thisWidth = parseInt(hotspot[i].style.width)
+                thisHeight = parseInt(hotspot[i].style.height)
+
+                if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft > thisLeft) && (currentLeft < thisLeft + thisWidth)) {
+                    //console.log('overlapping')
+                    return true
+
+                } else if ((currentTop + currentHeight > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft + currentWidth > thisLeft) && (currentLeft + currentWidth < thisLeft + thisWidth)) {
+                    //console.log('overlapping')
+                    return true
+
+                } else if ((currentTop > thisTop) && (currentTop < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
+                    //console.log('overlapping')
+                    return true
+
+                } else if ((currentTop + currentHeight > thisTop) && (currentTop + currentHeight < thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
+                    //console.log('overlapping')
+                    return true
+
+                } else if ((currentTop < thisTop) && (currentTop + currentHeight > thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
+                   // console.log('overlapping')
+                    return true
+
+                } else {
+                    //console.log('not overlapping')
+                    app.dom.showDropDown(currentTop + 'px', currentLeft + 'px');
+                    return false;
+
+                }
+            }
+
+        } else {
+            //console.log('not overlapping')
+            app.dom.showDropDown(currentTop + 'px', currentLeft + 'px');
+            return false;
+        }
+
+    };
+
+
+    var dragStart = function(event) {
+        event.dataTransfer.setData('text', event.target.id);
+    };
+
+    var escapeKey = function(e) {
+        if (app.dom.getNodesByClass('rectangle')[0])
+        // console.log('yes')
+        {
+            if (e.keyCode == 27) {
+                element = null
+                canvas.style.cursor = 'default';
+                app.dom.getNodesByClass('rectangle')[0].remove()
+            }
+        }
+    };
+
+
+    var setTagOnHotspot = function(selected_index) {
+        app.dom.hideDropDown();
+        alert('selected_index ' + selected_index);
     }
 
-  };
-
-  var dragStart = function(event) {
-    event.dataTransfer.setData("text", event.target.id);
-  };
+    return {
 
 
-  var escapeKey = function(e) {
-    if (document.getElementsByClassName("rectangle")[0])
-    // console.log("yes")
-    {
-      if (e.keyCode == 27) {
-        element = null;
-        canvas.style.cursor = "default";
-        document.getElementsByClassName("rectangle")[0].remove();
-      }
-    }
+        setTagOnHotspot: setTagOnHotspot,
+        createHotspot: createHotspot,
+        checkOverlap: checkOverlap,
+        dragStart: dragStart,
+        escapeKey: escapeKey
 
   };
 
 
-  var removeHotspot = function() {
-    if (element) {
-      console.log("dddd");
-    }
-  };
-
-
-  return {
-
-
-    createHotspot: createHotspot,
-    checkOverlap: checkOverlap,
-    removeHotspot: removeHotspot,
-    dragStart: dragStart,
-    escapeKey: escapeKey
-
-
-  };
-
-
-})();
+}();
