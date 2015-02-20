@@ -1,9 +1,6 @@
 var dropZone = document.getElementById('drop_zone');
 dropZone.addEventListener('dragover', imageFile.handleDragOver, false);
 dropZone.addEventListener('drop', imageFile.handleFileSelect, false);
-console.log("Hi");
-
-
 function addImage(object)
 {
   var listTag = document.getElementById('list');
@@ -12,6 +9,9 @@ function addImage(object)
   var div = document.createElement('div'); 
   var canvas = document.createElement('div');
 
+  var titleDiv = document.createElement('div');
+  var titleText = document.createTextNode(object.img_name); 
+  titleDiv.appendChild(titleText);
   var cross = document.createElement('img');
   cross.setAttribute('src', 'images/close.png');
   cross.setAttribute('id', 'cross');
@@ -23,10 +23,9 @@ function addImage(object)
   cross.setAttribute('onclick', "deletePic('"+object.img_name+"')");
   canvas.setAttribute('id', object.img_name+"c"); 
   canvas.setAttribute('class', 'canvas');
-
-  console.log(object.img_name+"c");
   div.appendChild(cross);
   div.appendChild(image);
+  div.appendChild(titleDiv);
   listTag.appendChild(div);
   preview.appendChild(canvas);       
 }
@@ -44,12 +43,14 @@ function viewImage(obj)
   preview.style.visibility='visible';
   var canvas = document.getElementById(obj.title+"c");
   canvas.style.display='block';
-  console.log(obj.title);   
   x = document.getElementById(obj.title).src;
   canvas.style.backgroundImage="url('"+x+"')";
   var saveButton = document.getElementById('save');
-  saveButton.setAttribute('onclick', "saveFile.generateURL('"+x+"' , '"+obj.title+"')") ;
+  // saveButton.setAttribute('onclick', "saveFile.generateURL('"+x+"' , '"+obj.title+"')") ;
+  saveButton.setAttribute('onclick', "saveFile.generateURL()") ;
+
   app.rectangle.setupTools(obj.title+"c");
+
 }
 
 function deletePic(obj)

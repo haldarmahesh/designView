@@ -12,8 +12,9 @@ app.hotspot = function() {
         return hotSpotData;
     };
 
-    var checkOverlap = function() {
-        var hotspot = app.dom.getAllhotspots();
+    var checkOverlap = function(canvas) {
+        console.log(canvas.id);
+        var hotspot = app.dom.getAllhotspots(canvas);
         var currentElement = hotspot[hotspot.length - 1]
         currentTop = parseInt(currentElement.style.top)
         currentLeft = parseInt(currentElement.style.left)
