@@ -9,9 +9,6 @@ function addImage(object)
   var div = document.createElement('div'); 
   var canvas = document.createElement('div');
 
-  var titleDiv = document.createElement('div');
-  var titleText = document.createTextNode(object.img_name); 
-  titleDiv.appendChild(titleText);
   var cross = document.createElement('img');
   cross.setAttribute('src', 'images/close.png');
   cross.setAttribute('id', 'cross');
@@ -25,9 +22,9 @@ function addImage(object)
   canvas.setAttribute('class', 'canvas');
   div.appendChild(cross);
   div.appendChild(image);
-  div.appendChild(titleDiv);
   listTag.appendChild(div);
-  preview.appendChild(canvas);       
+  preview.appendChild(canvas);
+  app.hotspot.createList();      
 }
 
 function viewImage(obj)
