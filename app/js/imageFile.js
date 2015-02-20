@@ -72,15 +72,16 @@ var saveImage =function(){
  for (i = 0; i < x.length; i++) 
  {
   if(x[i].classList.contains("notuploaded")){
-   x[i].classList.remove("notuploaded");
-   x[i].classList.add("uploaded");
+   
    var src = x[i].style.backgroundImage;
    var name = x[i].id;
    name = name.substring(0, name.length - 1);
    saveFile.generateURL(src , name);
+   x[i].classList.remove("notuploaded");
+   x[i].classList.add("uploaded");
  }
  else
-  console.log("all files are already saved");
+  console.log(" file  already saved");
 }
 
 }

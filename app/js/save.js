@@ -10,7 +10,7 @@ var saveFile = function(){
     var mtype = 'image/'+ftype;
     
     
-    console.log("File inp"+input);
+    // console.log("File inp"+input);
 
     filepicker.store(
       input,

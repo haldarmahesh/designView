@@ -99,6 +99,7 @@ app.hotspot = function() {
 
 
     }
+    
 
     var createList = function(image_name)
     {
