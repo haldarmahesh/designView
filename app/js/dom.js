@@ -30,10 +30,10 @@ function addImage(object) {
   div.setAttribute('id', object.img_name + "div");
   cross.setAttribute('onclick', "deletePic('" + object.img_name + "')");
   canvas.setAttribute('id', object.img_name + "c");
-  
+
   canvas.setAttribute('class', 'canvas notuploaded');
-  canvas.style.width =  image.naturalWidth+"px";
-  canvas.style.height = image.naturalHeight+"px"
+  canvas.style.width = image.naturalWidth + "px";
+  canvas.style.height = image.naturalHeight + "px"
 
 
   div.appendChild(cross);
@@ -47,6 +47,7 @@ function addImage(object) {
 
   app.hotspot.createList(object.img_name);
 }
+
 
 function viewImage(obj) {
   var images = document.getElementsByClassName("thumbnails");
@@ -79,4 +80,5 @@ function viewImage(obj) {
 function deletePic(obj) {
   document.getElementById(obj + "div").remove();
   document.getElementById(obj + "c").remove();
+  document.getElementById(obj + "list").remove()
 }
