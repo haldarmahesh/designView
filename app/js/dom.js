@@ -35,11 +35,11 @@ function addImage(object) {
   canvas.style.width = image.naturalWidth + "px";
   canvas.style.height = image.naturalHeight + "px"
 
-
+  div.appendChild(defaultButton);
   div.appendChild(cross);
   div.appendChild(image);
   div.appendChild(titleDiv);
-  div.appendChild(defaultButton);
+  
   listTag.appendChild(div);
   preview.appendChild(canvas);
 
