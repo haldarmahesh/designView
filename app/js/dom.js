@@ -5,15 +5,12 @@
 
  function addImage(object) {
    if (checkDuplicateImage(object.img_name + "div")) {
-    if(confirm("You are about to replace the image, are you sure?? "))
-      {
-        console.log("i will replace the image here");
-        deletePic(object.img_name);
-      }
-      else
-      {
-        return false;
-      }
+     if (confirm("You are about to replace the image, are you sure?? ")) {
+       console.log("i will replace the image here");
+       deletePic(object.img_name);
+     } else {
+       return false;
+     }
    }
    var listTag = document.getElementById('list');
    var preview = document.getElementById('preview');
@@ -30,7 +27,6 @@
    defaultButton.setAttribute('type', 'radio');
    defaultButton.setAttribute('name', 'default');
    defaultButton.setAttribute('value', object.img_name + "default");
-
 
    cross.setAttribute('src', 'images/close.png');
    cross.setAttribute('id', 'cross');

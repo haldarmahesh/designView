@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body onkeydown="app.hotspot.escapeKey(event)">
 
   <input type="button" value="save" id="save">
   <div style="clear:both"></div>
@@ -25,7 +25,7 @@
 
   </ul>
 
-  <div class="preview" id="preview"></div>
+  <div class="preview" id="preview" onkeypress ="app.hotspot.escapeKey(event)"></div>
   <script type="text/javascript" src="js/appdom.js"></script>
   <script type="text/javascript" src="js/apprectangle.js"></script>
   <script type="text/javascript" src="js/apphotspot.js"></script>

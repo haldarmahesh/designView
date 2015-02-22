@@ -79,7 +79,6 @@ app.hotspot = function() {
         {
             if (e.keyCode == 27) {
                 element = null;
-                canvas.style.cursor = 'default';
                 app.dom.getNodesByClass('rectangle')[0].remove()
             }
         }
