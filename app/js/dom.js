@@ -36,7 +36,7 @@
    image.setAttribute('id', object.img_name);
    image.setAttribute('onclick', "viewImage(this)");
    div.setAttribute('id', object.img_name + "div");
-   div.setAttribute('title', object.img_name);
+    div.setAttribute('title', object.img_name);
    cross.setAttribute('onclick', "deletePic('" + object.img_name + "')");
    canvas.setAttribute('id', object.img_name + "c");
 

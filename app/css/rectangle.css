@@ -27,6 +27,11 @@
 .hotspot p{
     display: none;
 }
+
+.hiddenUrl{
+    
+    display: none;
+}
 #previewButton{
     display:none;
 }
