@@ -31,5 +31,7 @@
 .hiddenUrl{
     
     display: none;
-
+}
+#previewButton{
+    display:none;
 }
