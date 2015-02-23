@@ -3,13 +3,13 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     useminPrepare: {
-      html: 'app/rectangle.html',
+      html: 'app/index.html',
       options: {
         dest: 'dist'
       }
     },
     usemin: {
-      html: ['dist/rectangle.html']
+      html: ['dist/index.html']
     },
     imagemin: {
       dynamic: {
@@ -52,5 +52,5 @@ module.exports = function (grunt) {
 
 
   grunt.registerTask('default', ['htmlhint', 'jshint', 'csslint']);
-  grunt.registerTask('build', ['useminPrepare','htmlmin', 'usemin']);
+  grunt.registerTask('build', ['useminPrepare', 'conact:generated', 'uglify:generated', 'cssmin:generated', 'usemin', 'htmlmin']);
 };
