@@ -27,3 +27,6 @@
 .hotspot p{
     display: none;
 }
+#previewButton{
+    display:none;
+}

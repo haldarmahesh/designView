@@ -30,10 +30,36 @@ var saveFile = function(){
         console.log("Loading: "+progress+"%");
       }
       );
+    enablePreview();
   }
+
+  var generateJSON = function(){
+    var list = document.getElementById('list');
+    var imageList = list.childNodes;
+    var length = imageList.length;
+    for (var i = 0;i<length; i++)
+    {
+      var allHotspots = imageList[i].childNodes;
+      for (var j=0;j<allHotspots;j++)
+      {
+        top = allHotspots[i].style.top;
+        left = allHotspots[i].style.left;
+        width = allHotspots.style.width;
+        height = allHotspots.style.height;
+        id = allHotspots[i].id;
+      }
+    }
+  }
+
+  var enablePreview = function(){
+    var preview = document.getElementById('previewButton');
+    preview.style.display = 'block';
+}
 
   return {
     generateURL : generateURL,
+    generateJSON : generateJSON,
+    enablePreview : enablePreview
     
     
   }

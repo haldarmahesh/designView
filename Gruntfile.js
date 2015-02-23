@@ -11,6 +11,25 @@ module.exports = function (grunt) {
     usemin: {
       html: ['dist/index.html']
     },
+    concat: {
+      dist: {
+        src: ['app/js/*.js'],
+        dest: 'dist/production.js',
+      }
+    },
+    uglify: {
+      files: {
+        'dist/production.min.js': ['dist/production.js']
+      }
+    },
+    cssmin: {
+      target: {
+        files: {
+          'dist/production.css': ['app/css/*.css']
+        }
+      }
+    },
+
     imagemin: {
       dynamic: {
         files: [{
@@ -42,7 +61,7 @@ module.exports = function (grunt) {
           collapseWhitespace: true
         },
         files: {
-          'dist/production.min.html': 'app/*.html'
+          'dist/index.min.html': 'app/*.html'
         }
       }
     }
@@ -52,5 +71,5 @@ module.exports = function (grunt) {
 
 
   grunt.registerTask('default', ['htmlhint', 'jshint', 'csslint']);
-  grunt.registerTask('build', ['useminPrepare', 'conact:generated', 'uglify:generated', 'cssmin:generated', 'usemin', 'htmlmin']);
+  grunt.registerTask('build', ['useminPrepare', 'concat', 'uglify', 'cssmin', 'usemin', 'htmlmin']);
 };
