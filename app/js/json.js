@@ -66,6 +66,10 @@ var JSONModule = function() {
                 var id = allHotspots[j].id;
                 var link = allHotspots[j].childNodes[0].innerHTML;
 
+                if(allHotspots[i].style.top == "")
+                {
+                  continue;
+                }
                 _writeHotspot(hotspotlist, id, top, left, width, height, link);
 
             }
