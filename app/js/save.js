@@ -42,7 +42,6 @@ var saveFile = function(){
     var list = document.getElementById('list');
     var imageList = list.childNodes;
     var length = imageList.length;
-    var defaultImage = list.getElementsByName('default');
     for(var k =0; k<defaultImage.length; k++)
     {
       if(defaultImage.checked)
