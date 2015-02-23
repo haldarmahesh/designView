@@ -40,28 +40,7 @@ var saveFile = function(){
    enablePreview();
  }
 
-  var generateJSON = function(){
-    var list = document.getElementById('list');
-    var imageList = list.childNodes;
-    var length = imageList.length;
-    for (var i = 0;i<length; i++)
-    {
-      var canvas = document.getElementById(imageList[i].title +'c');
-      var allHotspots = canvas.childNodes;
-      var url = allHotspots[length-1].innerHTML;
-      for (var j=0;j<allHotspots.length-1;j++)
-      {
-        var top = allHotspots[i].style.top;
-        var left = allHotspots[i].style.left;
-        var width = allHotspots.style.width;
-        var height = allHotspots.style.height;
-        var id = allHotspots[i].id;
-        var link = allHotspots[i].childNodes[1].innerHTML;
-
-      }
-    }
-  }
-
+ 
   var enablePreview = function(){
     var preview = document.getElementById('previewButton');
     preview.style.display = 'block';
@@ -69,7 +48,7 @@ var saveFile = function(){
 
   return {
     generateURL : generateURL,
-    generateJSON : generateJSON,
+  
     enablePreview : enablePreview
 
   }
