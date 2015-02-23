@@ -7,7 +7,6 @@ var JSONModule = function() {
         hotspotArray[id] = {};
         hotspotArray[id]["id"] = id;
         hotspotArray[id]["t"] = t;
-
         hotspotArray[id]["l"] = l;
         hotspotArray[id]["w"] = w;
         hotspotArray[id]["h"] = h;
@@ -65,13 +64,15 @@ var JSONModule = function() {
                 var width = allHotspots[j].style.width;
                 var height = allHotspots[j].style.height;
                 var id = allHotspots[j].id;
-                
+
 
                 if (allHotspots[j].style.top == "") {
-                    
-                   url = allHotspots[j].innerHTML;
-                }else{
-                  var link = allHotspots[j].childNodes[1].innerHTML;
+               
+                    url = allHotspots[j].innerHTML;
+                    continue;
+                   }else{
+                    var link = allHotspots[j].childNodes[1].innerHTML;
+               
                 }
                 _writeHotspot(hotspotlist, id, top, left, width, height, link);
 
@@ -86,7 +87,6 @@ var JSONModule = function() {
     }
 
     var getJSON = function() {
-        // alert(JSONObj["images"]["url.jpg"].filename);
         return JSONObj;
     }
 

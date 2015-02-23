@@ -14,8 +14,6 @@ var imageFile = function(){
     // Loop through the FileList and render image files as thumbnails.
     if(files.length > 0)
     {
-   
-         
         for (var i = 0, f; f = files[i]; i++) 
         {
             if (!f.type.match('image.*')) 
@@ -24,8 +22,6 @@ var imageFile = function(){
                }
          
           var reader = new FileReader();
-        
-
         reader.onload = (function(files) 
         {
 
@@ -53,6 +49,7 @@ var saveImage =function(){
  var x = document.getElementsByClassName("canvas");
  var i;
  // var url = "dummyurl";
+ saveFile.setNoOfUrl(x.length)
  for (i = 0; i < x.length; i++) 
  {
   if(x[i].classList.contains("notuploaded")){
@@ -65,12 +62,12 @@ var saveImage =function(){
   x[i].classList.add("uploaded");
  }
  else
-  console.log(" file  already saved");
+  {console.log(" file  already saved");
+    JSONModule.generateJSON();
+  }
+
+
 }
-
-
-JSONModule.generateJSON();
-
 
 }
 
