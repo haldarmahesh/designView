@@ -1,4 +1,5 @@
 var saveFile = function(){
+ var urlstring = false;
 
   var generateURL =function(src , title){
 
@@ -8,7 +9,7 @@ var saveFile = function(){
     var fname = title;
     var ftype = title.split('.')[1];
     var mtype = 'image/'+ftype;
-    
+   
     
     // console.log("File inp"+input);
 
@@ -20,7 +21,7 @@ var saveFile = function(){
       function(Blob){
         console.log("Store successful:" + JSON.stringify(Blob));
         console.log(Blob.url);
-
+        urlstring = Blob.url;
         return Blob.url;
       },
       function(FPError) {
@@ -28,14 +29,14 @@ var saveFile = function(){
       },
       function(progress) {
         console.log("Loading: "+progress+"%");
+        urlstring = "savingUrl";
       }
       );
   }
 
   return {
     generateURL : generateURL,
-    
-    
+    getUrl : urlstring
   }
 
 
