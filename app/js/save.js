@@ -24,8 +24,8 @@ var saveFile = function(){
        console.log(Blob.url);
        var canvas = document.getElementById(fname +'c');
        var setURL = document.createElement('p');
-       setURL.setAttribute('id', 'url');
-       var text = document.createTextNode("abcd");
+       setURL.setAttribute('class', 'filepickerurltext');
+       var text = document.createTextNode(Blob.url);
        setURL.appendChild(text);
        canvas.appendChild(setURL);
        

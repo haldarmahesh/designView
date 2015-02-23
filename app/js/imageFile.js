@@ -14,24 +14,7 @@ var imageFile = function(){
     // Loop through the FileList and render image files as thumbnails.
     if(files.length > 0)
     {
-    //  do
-    //  {
-    //    var x = document.getElementsByTagName("img");
-    //    var j;
-    //    var counter = 0;
-        // for (j = 0; j < x.length; j++) 
-        // {
-        //  console.log((x[j].title) + " and " + escape(files.name));
-        //  if(x[j].title == escape(files.name))
-        //  {
-      //      alert("You have already added this image");
-      //      console.log("heloooooooooooooooo"+(x[j].title));
-      //      break;
-        //  }
-        // }
-
-      
-
+   
          
         for (var i = 0, f; f = files[i]; i++) 
         {
@@ -79,13 +62,6 @@ var saveImage =function(){
    name = name.substring(0, name.length - 1);
    saveFile.generateURL(src , name);
    x[i].classList.remove("notuploaded");
-
-    // var urlptag = document.createElement('p');
-    // urlptag.setAttribute("class","hiddenUrl");
-    // var urltextnode = document.createTextNode(url); 
-    // urlptag.appendChild(urltextnode);
-    // x[i].appendChild(urlptag);
-
   x[i].classList.add("uploaded");
  }
  else

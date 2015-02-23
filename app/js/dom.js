@@ -27,7 +27,7 @@
    defaultButton.setAttribute('class', "thumbnails");
    defaultButton.setAttribute('type', 'radio');
    defaultButton.setAttribute('name', 'default');
-   defaultButton.setAttribute('value', object.img_name + "default");
+   defaultButton.setAttribute('value', object.img_name);
 
    cross.setAttribute('src', 'images/close.png');
    cross.setAttribute('id', 'cross');

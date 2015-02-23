@@ -3,16 +3,16 @@ var JSONModule = function() {
     var JSONObj = new Object();
 
     var _writeHotspot = function(hotspotArray, id, t, l, w, h, link) {
-        
-         hotspotArray[id] = {};
-         hotspotArray[id]["id"] = id;
-         hotspotArray[id]["t"] = t;
-        
-         hotspotArray[id]["l"] = l;
-         hotspotArray[id]["w"] = w;
-         hotspotArray[id]["h"] = h;
+
+        hotspotArray[id] = {};
+        hotspotArray[id]["id"] = id;
+        hotspotArray[id]["t"] = t;
+
+        hotspotArray[id]["l"] = l;
+        hotspotArray[id]["w"] = w;
+        hotspotArray[id]["h"] = h;
         hotspotArray[id]["link"] = link;
-        
+
     }
     var _writeDimensions = function(height, width) {
         var dimensions = {
@@ -41,19 +41,20 @@ var JSONModule = function() {
         var imageList = list.childNodes;
         var length = imageList.length;
         for (var i = 0; i < length; i++) {
-            var canvas = document.getElementById(imageList[i].title+ 'c');
+            var canvas = document.getElementById(imageList[i].title + 'c');
             var allHotspots = canvas.childNodes;
-            var url = "dummyurlssss";
+            var url = false;
             var imageHeight = canvas.style.height;
             var imageWidth = canvas.style.width;
             var imageName = imageList[i].title;
             var dimension = _writeDimensions(imageHeight, imageWidth);
             var hotspotlist = {};
+
             var defaultImage = document.getElementsByName('default');
             var defaultImageValue;
             for (var k = 0; k < defaultImage.length; k++) {
-                if (defaultImage.checked) {
-                    defaultImageValue = defaultImage[i].value;
+                if (defaultImage[k].checked) {
+                    defaultImageValue = defaultImage[k].value;
                     break;
                 }
             }
@@ -64,11 +65,13 @@ var JSONModule = function() {
                 var width = allHotspots[j].style.width;
                 var height = allHotspots[j].style.height;
                 var id = allHotspots[j].id;
-                var link = allHotspots[j].childNodes[0].innerHTML;
+                
 
-                if(allHotspots[i].style.top == "")
-                {
-                  continue;
+                if (allHotspots[j].style.top == "") {
+                    
+                   url = allHotspots[j].innerHTML;
+                }else{
+                  var link = allHotspots[j].childNodes[1].innerHTML;
                 }
                 _writeHotspot(hotspotlist, id, top, left, width, height, link);
 
@@ -83,11 +86,11 @@ var JSONModule = function() {
     }
 
     var getJSON = function() {
-           // alert(JSONObj["images"]["url.jpg"].filename);
-            return JSONObj;
-        }
-     
-   
+        // alert(JSONObj["images"]["url.jpg"].filename);
+        return JSONObj;
+    }
+
+
 
 
     return {
