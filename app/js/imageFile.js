@@ -28,7 +28,8 @@ var imageFile = function(){
           return function(e) 
           {
             output.url = e.target.result;
-            output.img_name = escape(files.name);
+            output.img_name = escape(files.name.split('.')[0]);
+            console.log(output.img_name);
             addImage(output);
           };
         })(f);
