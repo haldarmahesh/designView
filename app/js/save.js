@@ -42,6 +42,7 @@ var saveFile = function(){
     var list = document.getElementById('list');
     var imageList = list.childNodes;
     var length = imageList.length;
+    var defaultImage = list.getElementsByName('default').value;
     for (var i = 0;i<length; i++)
     {
       var canvas = document.getElementById(imageList[i].title +'c');
