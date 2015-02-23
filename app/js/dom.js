@@ -21,6 +21,7 @@
    var titleDiv = document.createElement('div');
    var titleText = document.createTextNode(object.img_name);
    titleDiv.appendChild(titleText);
+   titleDiv.setAttribute('id', 'link');
    var cross = document.createElement('img');
    var defaultButton = document.createElement('input');
    defaultButton.setAttribute('class', "thumbnails");

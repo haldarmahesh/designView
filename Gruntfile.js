@@ -3,14 +3,33 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     useminPrepare: {
-      html: 'app/rectangle.html',
+      html: 'app/index.html',
       options: {
         dest: 'dist'
       }
     },
     usemin: {
-      html: ['dist/rectangle.html']
+      html: ['dist/index.html']
     },
+    concat: {
+      dist: {
+        src: ['app/js/*.js'],
+        dest: 'dist/production.js',
+      }
+    },
+    uglify: {
+      files: {
+        'dist/production.min.js': ['dist/production.js']
+      }
+    },
+    cssmin: {
+      target: {
+        files: {
+          'dist/production.css': ['app/css/*.css']
+        }
+      }
+    },
+
     imagemin: {
       dynamic: {
         files: [{
@@ -42,7 +61,7 @@ module.exports = function (grunt) {
           collapseWhitespace: true
         },
         files: {
-          'dist/production.min.html': 'app/*.html'
+          'dist/index.min.html': 'app/*.html'
         }
       }
     }
@@ -52,5 +71,5 @@ module.exports = function (grunt) {
 
 
   grunt.registerTask('default', ['htmlhint', 'jshint', 'csslint']);
-  grunt.registerTask('build', ['useminPrepare','htmlmin', 'usemin']);
+  grunt.registerTask('build', ['useminPrepare', 'concat', 'uglify', 'cssmin', 'usemin', 'htmlmin']);
 };
