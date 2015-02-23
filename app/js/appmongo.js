@@ -60,6 +60,6 @@ app.mongodb = (function() {
   };
 
   return {
-    insert: insert,
+    insert: insert
   };
 })();
