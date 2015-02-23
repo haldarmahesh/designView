@@ -3,16 +3,15 @@ var JSONModule = function() {
     var JSONObj = new Object();
 
     var _writeHotspot = function(hotspotArray, id, t, l, w, h, link) {
-        
-         hotspotArray[id] = {};
-         hotspotArray[id]["id"] = id;
-         hotspotArray[id]["t"] = t;
-        
-         hotspotArray[id]["l"] = l;
-         hotspotArray[id]["w"] = w;
-         hotspotArray[id]["h"] = h;
+
+        hotspotArray[id] = {};
+        hotspotArray[id]["id"] = id;
+        hotspotArray[id]["t"] = t;
+        hotspotArray[id]["l"] = l;
+        hotspotArray[id]["w"] = w;
+        hotspotArray[id]["h"] = h;
         hotspotArray[id]["link"] = link;
-        
+
     }
     var _writeDimensions = function(height, width) {
         var dimensions = {
@@ -41,34 +40,42 @@ var JSONModule = function() {
         var imageList = list.childNodes;
         var length = imageList.length;
         for (var i = 0; i < length; i++) {
-            var canvas = document.getElementById(imageList[i].title+ 'c');
+            var canvas = document.getElementById(imageList[i].title + 'c');
             var allHotspots = canvas.childNodes;
-            var url = canvas.lastChild.innerHTML;
-            var imageHeight = canvas.style.height;
-            var imageWidth = canvas.style.width;
+
+            var url = false;
+
+            var imageHeight = parseInt(canvas.style.height);
+            var imageWidth = parseInt(canvas.style.width);
             var imageName = imageList[i].title;
             var dimension = _writeDimensions(imageHeight, imageWidth);
             var hotspotlist = {};
+
             var defaultImage = document.getElementsByName('default');
             var defaultImageValue;
             for (var k = 0; k < defaultImage.length; k++) {
-                if (defaultImage.checked) {
-                    defaultImageValue = defaultImage[i].value;
+                if (defaultImage[k].checked) {
+                    defaultImageValue = defaultImage[k].value;
                     break;
                 }
             }
 
             for (var j = 0; j < allHotspots.length; j++) {
-                var top = allHotspots[j].style.top;
-                var left = allHotspots[j].style.left;
-                var width = allHotspots[j].style.width;
-                var height = allHotspots[j].style.height;
+                var top = (parseInt(allHotspots[j].style.top)-canvas.offsetTop)*100.0/imageHeight;
+                var left = (parseInt(allHotspots[j].style.left)-canvas.offsetLeft)*100.0/imageWidth;
+                var width = parseInt(allHotspots[j].style.width)*100.0/imageWidth;
+                var height = parseInt(allHotspots[j].style.height)*100.0/imageHeight;
                 var id = allHotspots[j].id;
-                console.log("yyyyyy"+allHotspots[j].childNodes[1].innerHTML);
 
-                if(allHotspots[i].style.top == "")
-                {
-                  continue;
+
+
+                if (allHotspots[j].style.top == "") {
+               
+                    url = allHotspots[j].innerHTML;
+                    continue;
+                   }else{
+                    var link = allHotspots[j].childNodes[1].innerHTML;
+               
                 }
                 _writeHotspot(hotspotlist, id, top, left, width, height, link);
 
@@ -83,11 +90,11 @@ var JSONModule = function() {
     }
 
     var getJSON = function() {
-           // alert(JSONObj["images"]["url.jpg"].filename);
-            return JSONObj;
-        }
-     
-   
+        return JSONObj;
+    }
+
+
+
 
 
     return {

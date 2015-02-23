@@ -27,7 +27,7 @@
    defaultButton.setAttribute('class', "thumbnails");
    defaultButton.setAttribute('type', 'radio');
    defaultButton.setAttribute('name', 'default');
-   defaultButton.setAttribute('value', object.img_name + "default");
+   defaultButton.setAttribute('value', object.img_name);
 
    cross.setAttribute('src', 'images/close.png');
    cross.setAttribute('id', 'cross');
@@ -77,7 +77,7 @@
    x = document.getElementById(obj.title).src;
    canvas.style.backgroundImage = "url('" + x + "')";
    var saveButton = document.getElementById('save');
-   // saveButton.setAttribute('onclick', "saveFile.generateURL('"+x+"' , '"+obj.title+"')") ;
+  
    saveButton.setAttribute('onclick', "imageFile.saveImage()");
 
    app.rectangle.setupTools(obj.title + "c");

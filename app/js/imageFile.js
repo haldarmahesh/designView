@@ -14,25 +14,6 @@ var imageFile = function(){
     // Loop through the FileList and render image files as thumbnails.
     if(files.length > 0)
     {
-    //  do
-    //  {
-    //    var x = document.getElementsByTagName("img");
-    //    var j;
-    //    var counter = 0;
-        // for (j = 0; j < x.length; j++) 
-        // {
-        //  console.log((x[j].title) + " and " + escape(files.name));
-        //  if(x[j].title == escape(files.name))
-        //  {
-      //      alert("You have already added this image");
-      //      console.log("heloooooooooooooooo"+(x[j].title));
-      //      break;
-        //  }
-        // }
-
-      
-
-         
         for (var i = 0, f; f = files[i]; i++) 
         {
             if (!f.type.match('image.*')) 
@@ -41,15 +22,14 @@ var imageFile = function(){
                }
          
           var reader = new FileReader();
-        
-
         reader.onload = (function(files) 
         {
 
           return function(e) 
           {
             output.url = e.target.result;
-            output.img_name = escape(files.name);
+            output.img_name = escape(files.name.split('.')[0]);
+            console.log(output.img_name);
             addImage(output);
           };
         })(f);
@@ -70,6 +50,7 @@ var saveImage =function(){
  var x = document.getElementsByClassName("canvas");
  var i;
  // var url = "dummyurl";
+ saveFile.setNoOfUrl(x.length)
  for (i = 0; i < x.length; i++) 
  {
   if(x[i].classList.contains("notuploaded")){
@@ -79,22 +60,16 @@ var saveImage =function(){
    name = name.substring(0, name.length - 1);
    saveFile.generateURL(src , name);
    x[i].classList.remove("notuploaded");
-
-    // var urlptag = document.createElement('p');
-    // urlptag.setAttribute("class","hiddenUrl");
-    // var urltextnode = document.createTextNode(url); 
-    // urlptag.appendChild(urltextnode);
-    // x[i].appendChild(urlptag);
-
   x[i].classList.add("uploaded");
  }
  else
-  console.log(" file  already saved");
+  {console.log(" file  already saved");
+    JSONModule.generateJSON();
+    app.mongodb.insert(JSONModule.getJSON());
+  }
+
+
 }
-
-
-JSONModule.generateJSON();
-
 
 }
 
