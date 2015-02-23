@@ -40,7 +40,8 @@ var saveFile = function(){
    enablePreview();
  }
 
- 
+
+
   var enablePreview = function(){
     var preview = document.getElementById('previewButton');
     preview.style.display = 'block';

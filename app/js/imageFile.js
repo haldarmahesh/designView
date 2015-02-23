@@ -69,7 +69,7 @@ var handleDragOver = function(evt) {
 var saveImage =function(){
  var x = document.getElementsByClassName("canvas");
  var i;
- var url = "dummyurl";
+ // var url = "dummyurl";
  for (i = 0; i < x.length; i++) 
  {
   if(x[i].classList.contains("notuploaded")){
@@ -80,17 +80,21 @@ var saveImage =function(){
    saveFile.generateURL(src , name);
    x[i].classList.remove("notuploaded");
 
-    var urlptag = document.createElement('p');
-    urlptag.setAttribute("class","hiddenUrl");
-    var urltextnode = document.createTextNode(url); 
-    urlptag.appendChild(urltextnode);
-    x[i].appendChild(urlptag);
+    // var urlptag = document.createElement('p');
+    // urlptag.setAttribute("class","hiddenUrl");
+    // var urltextnode = document.createTextNode(url); 
+    // urlptag.appendChild(urltextnode);
+    // x[i].appendChild(urlptag);
 
   x[i].classList.add("uploaded");
  }
  else
   console.log(" file  already saved");
 }
+
+
+JSONModule.generateJSON();
+
 
 }
 
