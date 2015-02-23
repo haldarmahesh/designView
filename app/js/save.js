@@ -35,8 +35,9 @@ var saveFile = function() {
 
             if (doneUrl >= noOfUrl) {
               JSONModule.generateJSON();
-              alert("JSON CREATED");
+              app.mongodb.insert(JSONModule.getJSON());
               doneUrl = 0;
+              alert("JSON CREATED and PUSHED");
             }
 
           },

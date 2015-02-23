@@ -64,6 +64,7 @@ var saveImage =function(){
  else
   {console.log(" file  already saved");
     JSONModule.generateJSON();
+    app.mongodb.insert(JSONModule.getJSON());
   }
 
 
