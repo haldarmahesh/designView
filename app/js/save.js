@@ -39,14 +39,17 @@ var saveFile = function(){
     var length = imageList.length;
     for (var i = 0;i<length; i++)
     {
-      var allHotspots = imageList[i].childNodes;
-      for (var j=0;j<allHotspots;j++)
+      var canvas = document.getElementById(imageList[i].title +'c');
+      var allHotspots = canvas.childNodes;
+      var url = allHotspots[length-1].innerHTML;
+      for (var j=0;j<allHotspots.length-1;j++)
       {
-        top = allHotspots[i].style.top;
-        left = allHotspots[i].style.left;
-        width = allHotspots.style.width;
-        height = allHotspots.style.height;
-        id = allHotspots[i].id;
+        var top = allHotspots[i].style.top;
+        var left = allHotspots[i].style.left;
+        var width = allHotspots.style.width;
+        var height = allHotspots.style.height;
+        var id = allHotspots[i].id;
+        var link = allHotspots[i].childNodes[1].innerHTML;
       }
     }
   }
