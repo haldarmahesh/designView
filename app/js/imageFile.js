@@ -1,3 +1,4 @@
+
 var imageFile = function(){
 
   
@@ -102,10 +103,4 @@ return {
    saveImage : saveImage,
    resizeImage : resizeImage
  }
-
 }();
-
-
-
-
-

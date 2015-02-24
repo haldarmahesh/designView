@@ -46,7 +46,7 @@ app.hotspot = function() {
                     return true
 
                 } else if ((currentTop < thisTop) && (currentTop + currentHeight > thisTop + thisHeight) && (currentLeft < thisLeft) && (currentLeft + currentWidth > thisLeft + thisWidth)) {
-                   // console.log('overlapping')
+                    // console.log('overlapping')
                     return true
 
                 } else {
@@ -64,7 +64,6 @@ app.hotspot = function() {
 
             return false;
         }
-
     };
 
 
@@ -86,35 +85,28 @@ app.hotspot = function() {
 
     var setTagOnHotspot = function(selectedImage) {
         app.dom.hideDropDown();
-        // var hotspotId = document.getElementById()
-        // alert('selected_index ' + selectedImage);
-        canvasNow = document.getElementById(currentCanvas);
+         canvasNow = document.getElementById(currentCanvas);
         hotspotNow = canvasNow.childNodes
         var title = document.createElement('p');
         var titleText = document.createTextNode(selectedImage)
         title.appendChild(titleText)
         hotspotNow[hotspotNow.length - 1].appendChild(title)
+    };
 
 
-    }
-    
-
-    var createList = function(image_name)
-    {
+    var createList = function(image_name) {
         var parent = document.getElementById('dropdown');
         var length = document.getElementById('list').childNodes.length;
         var li_element = document.createElement('li');
-        li_element.setAttribute('id',image_name+'list');
-        li_element.setAttribute('onclick', "app.hotspot.setTagOnHotspot('"+image_name+"')");
+        li_element.setAttribute('id', image_name + 'list');
+        li_element.setAttribute('onclick', "app.hotspot.setTagOnHotspot('" + image_name + "')");
 
         li_element.innerHTML = image_name;
         parent.appendChild(li_element);
         imgcount++;
-    }
+    };
 
     return {
-
-
         setTagOnHotspot: setTagOnHotspot,
         createHotspot: createHotspot,
         checkOverlap: checkOverlap,
@@ -122,7 +114,7 @@ app.hotspot = function() {
         escapeKey: escapeKey,
         createList: createList
 
-  };
+    };
 
 
 }();

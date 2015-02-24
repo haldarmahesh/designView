@@ -85,11 +85,7 @@ app.dom = function() {
 
   var getAllhotspots = function(canvas) {
     var id = document.getElementById(canvas.id)
-      // console.log("aaaaapp"+document.getElementById(canvas.id).childNodes[0].id)
-
     var canvaHotspots = document.getElementById(canvas.id).childNodes
-      // return document.getElementsByClassName('hotspot');
-      // console.log("uuuuuuu"+canvaHotspots)
     return canvaHotspots
   }
 
