@@ -211,3 +211,7 @@ header ul li a:hover {
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 1);
 }
+
+.filepickerurltext {
+    display: none;
+}
