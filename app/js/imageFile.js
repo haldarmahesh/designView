@@ -38,14 +38,14 @@ var imageFile = function() {
         evt.stopPropagation();
         evt.preventDefault();
         evt.dataTransfer.dropEffect = 'copy';
-        
+
     }
 
     var saveImage = function() {
         var x = document.getElementsByClassName("canvas");
         var i;
-        // var url = "dummyurl";
-        saveFile.setNoOfUrl(x.length)
+      
+        saveFile.noOfUrl = x.length;
         for (i = 0; i < x.length; i++) {
             if (x[i].classList.contains("notuploaded")) {
 
@@ -56,9 +56,15 @@ var imageFile = function() {
                 x[i].classList.remove("notuploaded");
                 x[i].classList.add("uploaded");
             } else {
+                saveFile.doneUrl++;
                 console.log(" file  already saved");
-                JSONModule.generateJSON();
-                app.mongodb.insert(JSONModule.getJSON());
+                if(saveFile.doneUrl == saveFile.noOfUrl)
+                {
+                  saveFile.doneUrl= 0;
+                  JSONModule.generateJSON();
+                  app.mongodb.insert(JSONModule.getJSON());
+                  console.log("JSON CREATED and PUSHED");
+                }
             }
         }
     }

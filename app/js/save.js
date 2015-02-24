@@ -32,13 +32,13 @@ var saveFile = function() {
               var text = document.createTextNode(Blob.url);
               setURL.appendChild(text);
               canvas.appendChild(setURL);
-              doneUrl++;
+              saveFile.doneUrl++;
 
-              if (doneUrl >= noOfUrl) {
+              if (saveFile.doneUrl >= saveFile.noOfUrl) {
                 JSONModule.generateJSON();
                 app.mongodb.insert(JSONModule.getJSON());
-                doneUrl = 0;
-                alert("JSON CREATED and PUSHED");
+                saveFile.doneUrl = 0;
+                console.log("JSON CREATED and PUSHED");
               }
 
             },

@@ -5,7 +5,7 @@ app.mongodb = (function() {
         return new Promise(function(resolve, reject) {
             var xhr = new XMLHttpRequest();
             xhr.open(requestType, url, true);
-            if (requestType === 'get' || requestType === 'POST') {
+            if (requestType === 'get' || requestType === 'POST' || requestType =='PUT') {
                 xhr.responseType = 'json';
                 xhr.setRequestHeader('content-type', 'application/json');
             }
@@ -43,14 +43,14 @@ app.mongodb = (function() {
         var database = getDatabase();
         var collections = getCollection();
         var key = getApiKey();
-        var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '?apiKey=' + key;
+        var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections +'/54ec06e9e4b0f2526ea4f821'+'?apiKey=' + key;
         return url;
     }
 
     var insert = function(data) {
 
         var url = makeInsertFetchUrl();
-        promise('POST', url, JSON.stringify(data)).then(function(response) {
+        promise('PUT', url, JSON.stringify(data)).then(function(response) {
             console.log('Successful !!');
         }, function(status) {
             console.log('Unsuccessful!! Error status: ' + status);
