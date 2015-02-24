@@ -20,10 +20,9 @@
     display: none;
     cursor: pointer;
 }
-.hotspot:hover img {
+.hotspot:hover p{
     display: block;
 }
-
 .hotspot p{
     display: none;
 }

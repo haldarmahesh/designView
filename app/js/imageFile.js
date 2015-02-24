@@ -81,7 +81,6 @@ var resizeImage = function(object)
   var image = document.getElementById(object.img_name);
   currW = parseInt(image.naturalWidth);
   currH = parseInt(image.naturalHeight);
-  console.log("pehle" + currW + "and" + currH);
   var ratio = currH / currW;
   if(currW >= maxW && ratio <= 1){
     currW = maxW;

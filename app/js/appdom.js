@@ -8,6 +8,8 @@ app.dom = function() {
     divNew.setAttribute('id', 'hotspot' + hotspotcounter);
     divNew.setAttribute('draggable', 'true');
     divNew.setAttribute('ondragstart', 'dragStart(this)');
+    divNew.setAttribute('onmouseover', 'app.dom.showNextImage(this)');
+    divNew.setAttribute('onmouseout', 'app.dom.normalImage(this)');
     divNew.style.top = object.top + 'px';
     divNew.style.left = object.left + 'px';
     divNew.style.width = object.width + 'px';
@@ -91,6 +93,26 @@ app.dom = function() {
     return canvaHotspots
   }
 
+  var showNextImage = function(currHotspot)
+  {
+    if(currHotspot.childNodes[1])
+    {
+    var link = currHotspot.childNodes[1].innerHTML;
+    var next = document.getElementById(link+'div');
+    next.style.transform = "scale(1.5,1.5)";
+    //next.style.box-shadow = "2px solid black";
+  }
+  }
+ var normalImage = function(currHotspot)
+ {
+  if(currHotspot.childNodes[1])
+    {
+    var link = currHotspot.childNodes[1].innerHTML;
+    var next = document.getElementById(link+'div');
+    next.style.transform = "scale(1,1)";
+    //next.style.box-shadow = "2px solid black";
+  }
+ }
 
   return {
     showDropDown: showDropDown,
@@ -102,7 +124,9 @@ app.dom = function() {
     deleterectangledom: deleterectangledom,
     deletehotspotdom: deletehotspotdom,
     getNodesByClass: getNodesByClass,
-    getAllhotspots: getAllhotspots
+    getAllhotspots: getAllhotspots,
+    showNextImage: showNextImage,
+    normalImage: normalImage
   }
 
 }();
