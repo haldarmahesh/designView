@@ -30,8 +30,9 @@ var imageFile = function(){
             output.url = e.target.result;
             output.img_name = escape(files.name.split('.')[0]);
             console.log(output.img_name);
-            //resizeImage(output);
+            
             addImage(output);
+            resizeImage(output);
           };
         })(f);
 
@@ -71,28 +72,29 @@ var saveImage =function(){
 
 
 }
-
 }
 
-// var resizeImage = function(originalImage)
-// {
-//   maxW = 1000;
-//   maxH = 1000;
-//   currW = originalImage.naturalWidth;
-//   currH = originalImage.naturalHeight;
-//   console.log("pehle" + currW + "and" + currH);
-//   if(currW >= maxW &amp;&amp; ratio <= 1){
-//     currW = maxW;
-//     currH = currW * ratio;
-//   } 
-//   else if(currH >= maxH){
-//     currH = maxH;
-//     currW = currH / ratio;
-//   }
-//   originalImage.style.width = currW;
-//   originalImage.style.height = currH;
-//   console.log("baadme" + currW + "and" + currH);
-// }
+var resizeImage = function(object)
+{
+  maxW = 1000;
+  maxH = 1000;
+  var image = document.getElementById(object.img_name);
+  currW = parseInt(image.naturalWidth);
+  currH = parseInt(image.naturalHeight);
+  console.log("pehle" + currW + "and" + currH);
+  var ratio = currH / currW;
+  if(currW >= maxW && ratio <= 1){
+    currW = maxW;
+    currH = currW * ratio;
+  } 
+  else if(currH >= maxH){
+    currH = maxH;
+    currW = currH / ratio;
+  }
+  var canvas = document.getElementById(object.img_name+'c');
+  canvas.style.width = currW +"px";
+  canvas.style.height = currH +"px";
+}
 
 
 return {
