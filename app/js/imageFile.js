@@ -37,43 +37,49 @@ var imageFile = function(){
           };
         })(f);
 
-        
-        reader.readAsDataURL(f);
-      }
-       
-  };
+                reader.readAsDataURL(f);
+            }
+        };
+    }
+
+    var handleDragOver = function(evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+        evt.dataTransfer.dropEffect = 'copy';
+
+    }
+
+    var saveImage = function() {
+        var x = document.getElementsByClassName("canvas");
+        var i;
+      
+        saveFile.noOfUrl = x.length;
+        for (i = 0; i < x.length; i++) {
+            if (x[i].classList.contains("notuploaded")) {
+
+                var src = x[i].style.backgroundImage;
+                var name = x[i].id;
+                name = name.substring(0, name.length - 1);
+                saveFile.generateURL(src, name);
+                x[i].classList.remove("notuploaded");
+                x[i].classList.add("uploaded");
+            } else {
+                saveFile.doneUrl++;
+                console.log(" file  already saved");
+                if(saveFile.doneUrl == saveFile.noOfUrl)
+                {
+                  saveFile.doneUrl= 0;
+                  JSONModule.generateJSON();
+                  app.mongodb.insert(JSONModule.getJSON());
+                  console.log("JSON CREATED and PUSHED");
+                }
+            }
+        }
+    }
+
+
 }
 
-var handleDragOver = function(evt) {
-  evt.stopPropagation();
-  evt.preventDefault();
-  evt.dataTransfer.dropEffect = 'copy';
-}
-var saveImage =function(){
- var x = document.getElementsByClassName("canvas");
- var i;
- // var url = "dummyurl";
- saveFile.setNoOfUrl(x.length)
- for (i = 0; i < x.length; i++) 
- {
-  if(x[i].classList.contains("notuploaded")){
-   
-   var src = x[i].style.backgroundImage;
-   var name = x[i].id;
-   name = name.substring(0, name.length - 1);
-   saveFile.generateURL(src , name);
-   x[i].classList.remove("notuploaded");
-  x[i].classList.add("uploaded");
- }
- else
-  {console.log(" file  already saved");
-    JSONModule.generateJSON();
-    app.mongodb.insert(JSONModule.getJSON());
-  }
-
-
-}
-}
 
 var resizeImage = function(object)
 {

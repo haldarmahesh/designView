@@ -42,6 +42,8 @@ header ul {
     float:left;
     list-style-type: none;
     width:100%;
+    background: -webkit-linear-gradient(#4A4F55, #2F3234);
+    
 }
 
 header ul li {
