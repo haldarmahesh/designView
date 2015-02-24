@@ -11,7 +11,6 @@ var JSONModule = function() {
         hotspotArray[id]["w"] = w;
         hotspotArray[id]["h"] = h;
         hotspotArray[id]["link"] = link;
-
     }
     var _writeDimensions = function(height, width) {
         var dimensions = {
@@ -30,7 +29,6 @@ var JSONModule = function() {
         };
         imageArray[imgid] = imagefile;
     }
-
     var generateJSON = function() {
 
         JSONObj = new Object();
@@ -86,16 +84,10 @@ var JSONModule = function() {
 
         JSONObj["images"] = imageArray;
         JSONObj["default"] = defaultImageValue;
-
     }
-
     var getJSON = function() {
         return JSONObj;
     }
-
-
-
-
 
     return {
         generateJSON: generateJSON,

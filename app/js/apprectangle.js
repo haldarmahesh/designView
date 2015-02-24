@@ -48,6 +48,7 @@ app.rectangle = (function() {
             }
         }
     };
+    
     return {
         createRectangle: createRectangle,
         setupTools: setupTools

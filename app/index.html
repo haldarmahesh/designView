@@ -4,13 +4,10 @@
 <head>
     <title>ORB 42</title>
     <link rel="stylesheet" type="text/css" href="css/drag-n-drop.css">
-    <script type="text/javascript" src="http://api.filepicker.io/v1/filepicker.js"></script>
-    <script src="https://api.filepicker.io/v1/filepicker_debug.js"></script>
-
     <link rel="stylesheet" type="text/css" href="css/rectangle.css">
     <link rel="stylesheet" type="text/css" href="css/drop.css">
     <script>
-    var app = {};
+        var app = {};
     </script>
 
 </head>
@@ -23,10 +20,13 @@
     <div id="drop_zone">Drag and Drop the files here..</div>
     <div id="list"></div>
     <ul id="dropdown">
-
     </ul>
 
     <div class="preview" id="preview" onkeypress="app.hotspot.escapeKey(event)"></div>
+
+
+    <script type="text/javascript" src="http://api.filepicker.io/v1/filepicker.js"></script>
+    <script src="https://api.filepicker.io/v1/filepicker_debug.js"></script>
     <script type="text/javascript" src="js/appdom.js"></script>
     <script type="text/javascript" src="js/apprectangle.js"></script>
     <script type="text/javascript" src="js/apphotspot.js"></script>
