@@ -1,0 +1,40 @@
+/*header section*/
+header {
+    background: #45484d; /* Old browsers */
+    background: -moz-linear-gradient(top, #45484d 0%, #2b2b2b 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #45484d), color-stop(100%, #2b2b2b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #45484d 0%, #2b2b2b 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #45484d 0%, #2b2b2b 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #45484d 0%, #2b2b2b 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #45484d 0%, #2b2b2b 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#45484d', endColorstr='#2b2b2b', GradientType=0); /* IE6-9 */
+    clear: both;
+}
+
+header ul {
+    margin: 0;
+    padding: 0 10px;
+}
+
+header ul li {
+    display: inline-block;
+    color: white;
+    padding: 3px;
+}
+
+header ul li a i {
+    margin: 0 5px;
+}
+
+header ul li a:link, header ul li a:visited, header ul li a:active {
+    text-decoration: none;
+    color: white;
+    padding: 7px 15px;
+    display: inline-block;
+}
+
+header ul li a:hover {
+    background: rgba(0, 0, 0, .5);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
+    border-radius: 3px;
+}

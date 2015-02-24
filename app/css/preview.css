@@ -1,0 +1,19 @@
+/*Image preview area*/
+
+.preview {
+    position: absolute;
+    top: 50px;
+    left: 310px;
+    bottom: 0;
+    right: 0;
+}
+
+#preview > div {
+    cursor: crosshair;
+}
+
+.canvas {
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}

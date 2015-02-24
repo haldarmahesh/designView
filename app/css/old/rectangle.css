@@ -1,5 +1,5 @@
 #preview > div {
-    background-image: url('../images/sunny.jpg');
+    background-image: url('../../images/sunny.jpg');
     cursor: crosshair;
 }
 .rectangle {
