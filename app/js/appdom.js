@@ -2,7 +2,6 @@ app.dom = function() {
 
   var hotspotcounter = 0;
   var projectName = "abc";
-  var projectDetails;
   
   var addhotspotdom = function(canvas, object) {
     divNew = document.createElement('div');
@@ -111,33 +110,32 @@ app.dom = function() {
     //next.style.box-shadow = "2px solid black";
   }
  }
+ var takeProjectName = function()
+ {
+  var newProject = document.getElementById('newProject');
+  newProject.style.display = 'block';
+}
  var createProject = function()
  {
-  window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html#","_newtab");
+  //window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html#","_blank");
   var jsonObject = new Object();
-  projectName =document.getElementById('projectName');
-  var projects = app.mongodb.fetch();
-  if(var k=(app.dom.checkCurrentProjects(projects)))
-  {
-    projectDetails = projects[k];
-  }
+  projectName =document.getElementById('projectName').value;
+  jsonObject.name = projectName;
+  var project = app.mongodb.fetch(jsonObject);
+  console.log(project);
+  if(project)
+    showOldProject();
   else
-  {
-    jsonObject.name = projectName;
-    app.mongodb.insert(jsonObject);
-  }
+    {
+      app.mongodb.insert(jsonObject);
+    }
  }
- var checkCurrentProjects = function(projects)
+
+ var showOldProject = function()
  {
-  var flag = 0;
-  console.log(projectName);
-  for(var i=0;i<projects.length;i++)
-  {
-    if(projects[i].name==projectName)
-      flag = i;
-  }
-  return flag;
+  console.log("yup");
  }
+
 
   return {
     showDropDown: showDropDown,
@@ -154,8 +152,8 @@ app.dom = function() {
     normalImage: normalImage,
     createProject: createProject,
     projectName: projectName,
-    projectDetails: projectDetails,
-    checkCurrentProjects: checkCurrentProjects
+    showOldProject: showOldProject,
+    takeProjectName: takeProjectName,
   }
 
 }();

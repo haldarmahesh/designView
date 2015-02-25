@@ -41,17 +41,18 @@ app.mongodb = (function() {
 
 
   function makeInsertFetchJson(data) {
-    var database = 'hotspots';
-    var collections = 'hotspot_details';
+    var database = getDatabase();
+    var collections = getCollection();
     var key = getApiKey();
-    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections +'/'+'?q={"id": '+data.name+'}'+ '&apiKey=' + key;
+    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections +'/'+ '?apiKey=' + key;
     return url;
   }
 
   var insert = function(data) {
 
+      console.log("data"+data.name);
       var url = makeInsertFetchJson(data);
-      promise("PUT", url, JSON.stringify(data)).then(function(response) {
+      promise("POST", url, JSON.stringify(data)).then(function(response) {
       console.log('Successful !!');
     }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
@@ -60,7 +61,7 @@ app.mongodb = (function() {
 
   };
 
-  var fetch = function() {
+  var fetch = function(data) {
     var url = makeInsertFetchJson(data);
     promise('get', url, null).then(function(response) {
       console.log('Successfully fetched !!');
@@ -73,6 +74,7 @@ app.mongodb = (function() {
   };
 
   return {
-    insert: insert
+    insert: insert,
+    fetch: fetch
   };
 })();
