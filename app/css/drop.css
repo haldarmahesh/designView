@@ -28,6 +28,10 @@
     position: relative;
     margin: 20px 20px 30px 20px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, .5);
+    opacity: .7;
+}
+.drop-zone .list > div:hover {
+    opacity: 1;
 }
 
 .drop-zone .list div .screen-container {
