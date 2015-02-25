@@ -58,7 +58,6 @@ app.mongodb = (function() {
 
   var insert = function(data) {
 
-      console.log("data"+data.name);
       var url = makeInsertFetchJson(data);
       promise("PUT", url, JSON.stringify(data)).then(function(response) {
       console.log('Successful !!');
@@ -85,7 +84,7 @@ app.mongodb = (function() {
     var url = makeInsertFetchJson(data);
     promise('get', url, null).then(function(response) {
       console.log('Successfully fetched !!');
-      app.dom.checkJsonObject(response);
+      app.dom.checkJsonObject(response,data);
     }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
