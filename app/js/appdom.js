@@ -1,7 +1,7 @@
 app.dom = function() {
 
   var hotspotcounter = 0;
-  var projectName = "abc";
+  var projectName;
   
   var addhotspotdom = function(canvas, object) {
     divNew = document.createElement('div');
@@ -27,14 +27,15 @@ app.dom = function() {
       hotspot = document.getElementById(canvas.id).childNodes
       hotspot[hotspot.length - 1].remove()
     }
+    return divNew.id;
   };
 
   var deletehotspotdom = function(hotspot) {
 
-    element = null
+    element = null;
+    normalImage(document.getElementById(hotspot));
     document.getElementById(hotspot).remove();
     document.getElementById('rect').remove();
-
   };
 
   var deleterectangledom = function(canvas, objectID) {
@@ -117,17 +118,20 @@ app.dom = function() {
 }
  var createProject = function()
  {
-  //window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html#","_blank");
+  //window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html?#","_blank");
+
+  var newProject = document.getElementById('newProject');
+  newProject.style.display="none";
   var jsonObject = new Object();
   projectName =document.getElementById('projectName').value;
   jsonObject.name = projectName;
   app.mongodb.fetch(jsonObject);
   }
-  var checkJsonObject = function(project)
+  var checkJsonObject = function(project,jsonObject)
   {
-  if(project!=undefined)
+  if(project.length != 0)
   {
-    showOldProject();
+    alert("This project name is already in use!");
   }
   else
     {
@@ -135,10 +139,40 @@ app.dom = function() {
     }
  }
 
- var showOldProject = function()
- {
-  console.log("yup");
- }
+var showList = function()
+{
+  app.mongodb.fetchAll();
+}
+
+var listOfProjects = function(list)
+{
+  ul = document.getElementById('projectList');
+  var length = list.length;
+  for(var i=0;i<length;i++)
+  {
+    var name = list[i].name;
+    var li = document.createElement('li');
+    li.setAttribute('onclick', 'app.dom.setJsonObjectFetch(this)');
+    li.innerHTML = name;
+    app.dom.projectName  =name;
+    ul.appendChild(li);
+  }
+
+}
+
+var setJsonObjectFetch = function(project)
+{
+  console.log("inside project"+ project);
+  var JSONObj = new Object();
+  JSONObj.name = project.innerHTML;
+  app.mongodb.fetchJsonObject(JSONObj);
+}
+
+var getJSON = function(object)
+{
+  console.log(object[0]);
+  app.open.parseJson(JSON.stringify(object[0]));
+}
 
 
   return {
@@ -155,10 +189,13 @@ app.dom = function() {
     showNextImage: showNextImage,
     normalImage: normalImage,
     createProject: createProject,
-    projectName: projectName,
-    showOldProject: showOldProject,
     takeProjectName: takeProjectName,
-    checkJsonObject: checkJsonObject
+    projectName: projectName,
+    checkJsonObject: checkJsonObject,
+    showList: showList,
+    listOfProjects: listOfProjects,
+    setJsonObjectFetch:setJsonObjectFetch,
+    getJSON:getJSON
   }
 
 }();

@@ -24,7 +24,7 @@ var imageFile = function () {
             output.url = e.target.result;
             output.img_name = escape(files.name.split('.')[0]);
             console.log(output.img_name);
-            addImage(output);
+            app.previewdom.addImage(output);
           };
         })(f);
 
@@ -61,13 +61,14 @@ var imageFile = function () {
         if (saveFile.doneUrl == saveFile.noOfUrl) {
           saveFile.doneUrl = 0;
           JSONModule.generateJSON();
-          app.mongodb.insert(JSONModule.getJSON(),"json");
+          app.mongodb.insert(JSONModule.getJSON());
           console.log("JSON CREATED and PUSHED");
         }
       }
     }
+    var previewButton = document.getElementById('previewButton');
+    previewButton.href = "http://sohamkamani.github.io/web_display_app/dist/index.html"+"?pr="+app.dom.projectName;
   };
-
 
   return {
     handleFileSelect: handleFileSelect,
