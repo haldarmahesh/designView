@@ -31,10 +31,10 @@ app.dom = function() {
 
   var deletehotspotdom = function(hotspot) {
 
-    element = null
+    element = null;
+    normalImage(document.getElementById(hotspot));
     document.getElementById(hotspot).remove();
     document.getElementById('rect').remove();
-
   };
 
   var deleterectangledom = function(canvas, objectID) {
