@@ -40,11 +40,19 @@ app.mongodb = (function() {
   }
 
 
+  function makeNewInsertFetchJson(data) {
+    var database = getDatabase();
+    var collections = getCollection();
+    var key = getApiKey();
+    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '?apiKey=' + key;
+    return url;
+  }
+
   function makeInsertFetchJson(data) {
     var database = getDatabase();
     var collections = getCollection();
     var key = getApiKey();
-    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections +'/'+ '?apiKey=' + key;
+    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections +'/'+'?q={"name":"'+data.name+'"}'+ '&apiKey=' + key;
     return url;
   }
 
@@ -52,6 +60,18 @@ app.mongodb = (function() {
 
       console.log("data"+data.name);
       var url = makeInsertFetchJson(data);
+      promise("PUT", url, JSON.stringify(data)).then(function(response) {
+      console.log('Successful !!');
+    }, function(status) {
+      console.log('Unsuccessful!! Error status: ' + status);
+    });
+
+
+  };
+
+  var insertNew = function(data) {
+
+      var url = makeNewInsertFetchJson(data);
       promise("POST", url, JSON.stringify(data)).then(function(response) {
       console.log('Successful !!');
     }, function(status) {
@@ -65,8 +85,7 @@ app.mongodb = (function() {
     var url = makeInsertFetchJson(data);
     promise('get', url, null).then(function(response) {
       console.log('Successfully fetched !!');
-      //app.infoCenter.setCommentInfo(response);
-      //app.renderPage.displayComment();
+      app.dom.checkJsonObject(response);
     }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
@@ -75,6 +94,7 @@ app.mongodb = (function() {
 
   return {
     insert: insert,
-    fetch: fetch
+    fetch: fetch,
+    insertNew: insertNew
   };
 })();

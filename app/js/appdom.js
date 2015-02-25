@@ -121,13 +121,17 @@ app.dom = function() {
   var jsonObject = new Object();
   projectName =document.getElementById('projectName').value;
   jsonObject.name = projectName;
-  var project = app.mongodb.fetch(jsonObject);
-  console.log(project);
-  if(project)
+  app.mongodb.fetch(jsonObject);
+  }
+  var checkJsonObject = function(project)
+  {
+  if(project!=undefined)
+  {
     showOldProject();
+  }
   else
     {
-      app.mongodb.insert(jsonObject);
+      app.mongodb.insertNew(jsonObject);
     }
  }
 
@@ -154,6 +158,7 @@ app.dom = function() {
     projectName: projectName,
     showOldProject: showOldProject,
     takeProjectName: takeProjectName,
+    checkJsonObject: checkJsonObject
   }
 
 }();
