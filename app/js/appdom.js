@@ -1,7 +1,9 @@
 app.dom = function() {
 
   var hotspotcounter = 0;
-
+  var projectName = "abc";
+  var projectDetails;
+  
   var addhotspotdom = function(canvas, object) {
     divNew = document.createElement('div');
     divNew.className = 'hotspot';
@@ -109,6 +111,33 @@ app.dom = function() {
     //next.style.box-shadow = "2px solid black";
   }
  }
+ var createProject = function()
+ {
+  window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html#","_newtab");
+  var jsonObject = new Object();
+  projectName =document.getElementById('projectName');
+  var projects = app.mongodb.fetch();
+  if(var k=(app.dom.checkCurrentProjects(projects)))
+  {
+    projectDetails = projects[k];
+  }
+  else
+  {
+    jsonObject.name = projectName;
+    app.mongodb.insert(jsonObject);
+  }
+ }
+ var checkCurrentProjects = function(projects)
+ {
+  var flag = 0;
+  console.log(projectName);
+  for(var i=0;i<projects.length;i++)
+  {
+    if(projects[i].name==projectName)
+      flag = i;
+  }
+  return flag;
+ }
 
   return {
     showDropDown: showDropDown,
@@ -122,7 +151,11 @@ app.dom = function() {
     getNodesByClass: getNodesByClass,
     getAllhotspots: getAllhotspots,
     showNextImage: showNextImage,
-    normalImage: normalImage
+    normalImage: normalImage,
+    createProject: createProject,
+    projectName: projectName,
+    projectDetails: projectDetails,
+    checkCurrentProjects: checkCurrentProjects
   }
 
 }();

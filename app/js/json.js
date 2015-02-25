@@ -82,9 +82,10 @@ var JSONModule = function() {
             _writeImage(imageArray, imageName, imageName, url, dimension, hotspotlist);
         }
 
+        JSONObj["name"] = app.dom.projectName;
         JSONObj["images"] = imageArray;
         JSONObj["default"] = defaultImageValue;
-    }
+            }
     var getJSON = function() {
         return JSONObj;
     }

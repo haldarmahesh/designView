@@ -61,7 +61,7 @@ var imageFile = function () {
         if (saveFile.doneUrl == saveFile.noOfUrl) {
           saveFile.doneUrl = 0;
           JSONModule.generateJSON();
-          app.mongodb.insert(JSONModule.getJSON());
+          app.mongodb.insert(JSONModule.getJSON(),"json");
           console.log("JSON CREATED and PUSHED");
         }
       }
