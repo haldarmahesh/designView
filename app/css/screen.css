@@ -1,0 +1,19 @@
+.new-project
+{
+	display: none;
+	position: absolute;
+	top: 39px;
+	left: 100px;
+	border: 1px solid black;
+	background-color: white;	
+	padding: 20px;
+	width: 300px;
+	z-index: 100;
+}
+
+.new-project input
+{
+	display: block;
+	padding: 2px;
+	margin: 10px;
+}

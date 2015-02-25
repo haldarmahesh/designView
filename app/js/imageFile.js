@@ -41,6 +41,13 @@ var imageFile = function () {
 
   };
 
+  var newProject = function()
+  {
+    console.log("in function") ;
+    var newProject = document.getElementById('newProject');
+    newProject.style.display = 'block';
+  }
+
   var saveImage = function () {
     var x = document.getElementsByClassName("canvas");
     var i;
@@ -72,7 +79,8 @@ var imageFile = function () {
   return {
     handleFileSelect: handleFileSelect,
     handleDragOver: handleDragOver,
-    saveImage: saveImage
+    saveImage: saveImage,
+    newProject: newProject
   };
 
 }();
