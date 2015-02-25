@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/hotspots.css"/>
     <link rel="stylesheet" href="css/preview.css"/>
     <link rel="stylesheet" href="css/misc.css"/>
+    <link rel="stylesheet" href="css/screen.css"/>
+
 
 </head>
 
@@ -24,17 +26,24 @@
 <header>
     <ul class="menu">
         <li><strong>Orb42 : Designer</strong></li>
-        <li id="new" class="button">
-            <a href="#"><i class="fa fa-file-o"></i>New</a>
+        <li  class="button">
+            <a href="#" id="new" onclick="app.dom.takeProjectName()">New</a>
         </li>
         <li class="button">
-            <a href="#" id="save"><i class="fa fa-cloud-upload"></i>Save</a>
+            <a href="#" id="save">Save</a>
         </li>
-        <li id="" class="button">
-            <a href="#" id="previewButton"><i class="fa fa-eye"></i>Preview</a>
+        <li class="button">
+            <a href="#" id="previewButton">Preview</a>
         </li>
     </ul>
 </header>
+<div class = "new-project" id = "newProject">
+   <form onsubmit="app.dom.createProject()">
+       <input type = "text" id = "projectName" placeholder = "Project Name" />
+       <input type = "text" id = "projectId" placeholder = "Project Id" /> 
+       <input type = "submit" value = "Submit" />       
+   </form>
+</div>
 <div id="drop_zone" class="drop-zone">
     <span>Drag and drop files here &hellip;</span>
     <div id="list" class="list"></div>
