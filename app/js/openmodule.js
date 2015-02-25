@@ -118,7 +118,7 @@ app.open = function() {
             }
         }
 
-
+        document.getElementById('dropdown').style.display='none';
 
     }
     return {

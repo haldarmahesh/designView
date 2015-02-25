@@ -152,12 +152,25 @@ var listOfProjects = function(list)
   {
     var name = list[i].name;
     var li = document.createElement('li');
-    // var a = document.createElement('a');
-    // a.setAttribute('href', '#');
+    li.setAttribute('onclick', 'app.dom.setJsonObjectFetch(this)');
     li.innerHTML = name;
     ul.appendChild(li);
   }
 
+}
+
+var setJsonObjectFetch = function(project)
+{
+  console.log("inside project"+ project);
+  var JSONObj = new Object();
+  JSONObj.name = project.innerHTML;
+  app.mongodb.fetchJsonObject(JSONObj);
+}
+
+var getJSON = function(object)
+{
+  console.log(object[0]);
+  app.open.parseJson(JSON.stringify(object[0]));
 }
 
 
@@ -179,7 +192,9 @@ var listOfProjects = function(list)
     projectName: projectName,
     checkJsonObject: checkJsonObject,
     showList: showList,
-    listOfProjects: listOfProjects
+    listOfProjects: listOfProjects,
+    setJsonObjectFetch:setJsonObjectFetch,
+    getJSON:getJSON
   }
 
 }();
