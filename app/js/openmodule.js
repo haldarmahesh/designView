@@ -44,7 +44,7 @@ app.open = function() {
             };
             output.url = imagedata.filepickerurl;
             output.img_name = imagedata.id;
-            addImage(output);
+            app.previewdom.addImage(output);
 
 
 

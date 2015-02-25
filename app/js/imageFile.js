@@ -24,7 +24,7 @@ var imageFile = function () {
             output.url = e.target.result;
             output.img_name = escape(files.name.split('.')[0]);
             console.log(output.img_name);
-            addImage(output);
+            app.previewdom.addImage(output);
           };
         })(f);
 
