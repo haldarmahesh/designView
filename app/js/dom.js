@@ -73,10 +73,17 @@ function viewImage(obj) {
   }
 
   var x = document.getElementsByClassName("canvas");
+  var previewthumbs = document.getElementsByClassName("selectedCanvasthumb");
   var i;
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";
   }
+
+  for(i=0;i<previewthumbs.length;i++)
+  {
+    previewthumbs[i].classList.remove("selectedCanvasthumb");
+  }
+
 
   var preview = document.getElementById('preview');
   preview.style.visibility = 'visible';
@@ -87,6 +94,7 @@ function viewImage(obj) {
   canvas.style.backgroundImage = "url('" + x + "')";
 
   currentCanvas = obj.title + "c";
+  document.getElementById(obj.title+"div").classList.add("selectedCanvasthumb");
 
   var saveButton = document.getElementById('save');
   saveButton.setAttribute('onclick', "imageFile.saveImage()");
@@ -101,7 +109,7 @@ function deletePic(obj) {
 }
 
 function checkDuplicateImage(divName) {
-  var allImages = document.getElementById("list").childNodes
+  var allImages = document.getElementById("list").childNodes;
   var flagCheck = 0;
   if (allImages.length > 0) {
     for (var i = allImages.length - 1; i >= 0; i--) {

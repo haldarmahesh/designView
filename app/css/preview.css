@@ -8,7 +8,7 @@
     right: 0;
 }
 
-#preview > div {
+#preview > div 4
     cursor: crosshair;
 }
 
@@ -16,4 +16,10 @@
     position: relative;
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+div.selectedCanvasthumb > div.screen-container{
+    box-shadow: 0 0 0 1px rgba(154,192,235,1),0 0 1px 2px rgba(121,168,198,1),0 0 0 3px rgba(151,192,235,1),0 0 0 4px rgba(0,0,0,1);
+    border:1px solid black;
+    box-sizing:border-box;
 }
