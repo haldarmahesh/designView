@@ -10,7 +10,7 @@ app.open = function() {
             return img;
         });
 
-      
+
 
 
         var i = 0;
@@ -53,16 +53,13 @@ app.open = function() {
             for (k = 0; k < allCanvases.length; k++) {
                 allCanvases[k].classList.remove("notuploaded");
                 allCanvases[k].classList.add("uploaded");
-             
+
             }
 
 
             var hotspotArray = _.map(imagesArray[i].hotspots, function(hps) {
                 return hps;
             });
-
-
-
 
 
             var j = 0;
@@ -94,9 +91,14 @@ app.open = function() {
                     height: hotspotdata.height
                 };
                 var canvas = document.getElementById(output.img_name + 'c');
-                app.dom.addhotspotdom(canvas, hotSpotInsertData);
+                app.dom.hotspotcounter = hotspotdata.id; 
+                var hotspotid = app.dom.addhotspotdom(canvas, hotSpotInsertData);
+                var hotspotcurrent = document.getElementById(hotspotid);
 
-                //ID and Link left
+                var linkp = document.createElement('p');
+                var linktext = document.createTextNode(hotspotdata.link);
+                linkp.appendChild(linktext);
+                hotspotcurrent.appendChild(linkp);
 
             }
 
@@ -105,9 +107,16 @@ app.open = function() {
 
         }
 
-          //default left
-          var defaultImage = JsonObject.defaultImage;
-          var radiobuttons = document.getElementsByName('default');
+        //default left
+        var defaultImage = JsonObject.default;
+        var thumbnails = document.getElementsByClassName('thumbnails');
+        var m = 0;
+        for (m = 0; m < thumbnails.length; ++m) {
+            if (thumbnails[m].type == 'radio' && thumbnails[m].value == defaultImage) {
+                thumbnails[m].checked = true;
+                console.log("checked");
+            }
+        }
 
 
 

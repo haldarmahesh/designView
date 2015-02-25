@@ -26,6 +26,7 @@ app.dom = function() {
       hotspot = document.getElementById(canvas.id).childNodes
       hotspot[hotspot.length - 1].remove()
     }
+    return divNew.id;
   };
 
   var deletehotspotdom = function(hotspot) {
