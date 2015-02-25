@@ -59,8 +59,8 @@ var JSONModule = function() {
             }
 
             for (var j = 0; j < allHotspots.length; j++) {
-                var top = (parseInt(allHotspots[j].style.top)-canvas.offsetTop)*100.0/imageHeight;
-                var left = (parseInt(allHotspots[j].style.left)-canvas.offsetLeft)*100.0/imageWidth;
+                var top = (parseInt(allHotspots[j].style.top)-41.0)*100.0/imageHeight;
+                var left = (parseInt(allHotspots[j].style.left)-300.0)*100.0/imageWidth;
                 var width = parseInt(allHotspots[j].style.width)*100.0/imageWidth;
                 var height = parseInt(allHotspots[j].style.height)*100.0/imageHeight;
                 var id = allHotspots[j].id;

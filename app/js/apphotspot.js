@@ -74,7 +74,6 @@ app.hotspot = function () {
 
   var escapeKey = function (e) {
     if (app.dom.getNodesByClass('rectangle')[0])
-    // console.log('yes')
     {
       if (e.keyCode == 27) {
         element = null;

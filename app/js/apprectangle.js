@@ -1,4 +1,8 @@
 app.rectangle = (function() {
+
+    var offsetLeft = 310;
+    var offsetTop = 50;
+
     function setupTools(canvas) {
         var canvasdiv = app.dom.getNodeById(canvas);
         createRectangle(canvasdiv);
@@ -9,8 +13,8 @@ app.rectangle = (function() {
         function setMousePosition(e) {
             var ev = e || window.event; //Moz || IE
             if (ev.pageX) { //Moz
-                mouse.x = ev.pageX + window.pageXOffset;
-                mouse.y = ev.pageY + window.pageYOffset;
+                mouse.x = ev.pageX + window.pageXOffset - offsetLeft;
+                mouse.y = ev.pageY + window.pageYOffset - offsetTop;
             } else if (ev.clientX) { //IE
                 mouse.x = ev.clientX + document.body.scrollLeft;
                 mouse.y = ev.clientY + document.body.scrollTop;
@@ -38,7 +42,7 @@ app.rectangle = (function() {
                 app.dom.addhotspotdom(canvas, object)
                 app.dom.deleterectangledom(canvas, 'rect');
                 element = null;
-                
+
 
             } else {
                 mouse.startX = mouse.x;
@@ -48,7 +52,7 @@ app.rectangle = (function() {
             }
         }
     };
-    
+
     return {
         createRectangle: createRectangle,
         setupTools: setupTools
