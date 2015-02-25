@@ -117,7 +117,7 @@ app.dom = function() {
 }
  var createProject = function()
  {
-  //window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html#","_blank");
+  //window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html?#","_blank");
 
   var newProject = document.getElementById('newProject');
   newProject.style.display="none";
@@ -138,6 +138,27 @@ app.dom = function() {
     }
  }
 
+var showList = function()
+{
+  app.mongodb.fetchAll();
+}
+
+var listOfProjects = function(list)
+{
+  ul = document.getElementById('projectList');
+  var length = list.length;
+  for(var i=0;i<length;i++)
+  {
+    var name = list[i].name;
+    var li = document.createElement('li');
+    // var a = document.createElement('a');
+    // a.setAttribute('href', '#');
+    li.innerHTML = name;
+    ul.appendChild(li);
+  }
+
+}
+
 
   return {
     showDropDown: showDropDown,
@@ -155,7 +176,9 @@ app.dom = function() {
     createProject: createProject,
     takeProjectName: takeProjectName,
     projectName: projectName,
-    checkJsonObject: checkJsonObject
+    checkJsonObject: checkJsonObject,
+    showList: showList,
+    listOfProjects: listOfProjects
   }
 
 }();

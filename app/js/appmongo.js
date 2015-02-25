@@ -56,6 +56,14 @@ app.mongodb = (function() {
     return url;
   }
 
+  function makeFetchAllJson() {
+    var database = getDatabase();
+    var collections = getCollection();
+    var key = getApiKey();
+    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections +'/'+ '?apiKey=' + key;
+    return url;
+  }
+
   var insert = function(data) {
 
       var url = makeInsertFetchJson(data);
@@ -91,9 +99,22 @@ app.mongodb = (function() {
 
   };
 
+  var fetchAll = function()
+  {
+    var url = makeFetchAllJson();
+    promise('get', url, null).then(function(response) {
+      console.log('Successfully fetched !!');
+       app.dom.listOfProjects(response);
+    }, function(status) {
+      console.log('Unsuccessful!! Error status: ' + status);
+    });
+
+  }
+
   return {
     insert: insert,
     fetch: fetch,
-    insertNew: insertNew
+    insertNew: insertNew,
+    fetchAll: fetchAll
   };
 })();
