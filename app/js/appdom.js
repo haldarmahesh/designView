@@ -1,7 +1,8 @@
 app.dom = function() {
 
   var hotspotcounter = 0;
-
+  var projectName;
+  
   var addhotspotdom = function(canvas, object) {
     divNew = document.createElement('div');
     divNew.className = 'hotspot';
@@ -110,6 +111,55 @@ app.dom = function() {
     //next.style.box-shadow = "2px solid black";
   }
  }
+ var takeProjectName = function()
+ {
+  var newProject = document.getElementById('newProject');
+  newProject.style.display = 'block';
+}
+ var createProject = function()
+ {
+  //window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html?#","_blank");
+
+  var newProject = document.getElementById('newProject');
+  newProject.style.display="none";
+  var jsonObject = new Object();
+  projectName =document.getElementById('projectName').value;
+  jsonObject.name = projectName;
+  app.mongodb.fetch(jsonObject);
+  }
+  var checkJsonObject = function(project,jsonObject)
+  {
+  if(project.length != 0)
+  {
+    alert("This project name is already in use!");
+  }
+  else
+    {
+      app.mongodb.insertNew(jsonObject);
+    }
+ }
+
+var showList = function()
+{
+  app.mongodb.fetchAll();
+}
+
+var listOfProjects = function(list)
+{
+  ul = document.getElementById('projectList');
+  var length = list.length;
+  for(var i=0;i<length;i++)
+  {
+    var name = list[i].name;
+    var li = document.createElement('li');
+    // var a = document.createElement('a');
+    // a.setAttribute('href', '#');
+    li.innerHTML = name;
+    ul.appendChild(li);
+  }
+
+}
+
 
   return {
     showDropDown: showDropDown,
@@ -123,7 +173,13 @@ app.dom = function() {
     getNodesByClass: getNodesByClass,
     getAllhotspots: getAllhotspots,
     showNextImage: showNextImage,
-    normalImage: normalImage
+    normalImage: normalImage,
+    createProject: createProject,
+    takeProjectName: takeProjectName,
+    projectName: projectName,
+    checkJsonObject: checkJsonObject,
+    showList: showList,
+    listOfProjects: listOfProjects
   }
 
 }();
