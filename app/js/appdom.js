@@ -128,23 +128,14 @@ app.dom = function() {
   }
   var checkJsonObject = function(project,jsonObject)
   {
-    console.log(project.length);
   if(project.length != 0)
   {
-    showOldProject();
-    console.log(project);
-    project.name;
+    alert("This project name is already in use!");
   }
   else
     {
-      console.log("uugh");
       app.mongodb.insertNew(jsonObject);
     }
- }
-
- var showOldProject = function()
- {
-  console.log("yup");
  }
 
 
@@ -162,7 +153,6 @@ app.dom = function() {
     showNextImage: showNextImage,
     normalImage: normalImage,
     createProject: createProject,
-    showOldProject: showOldProject,
     takeProjectName: takeProjectName,
     projectName: projectName,
     checkJsonObject: checkJsonObject
