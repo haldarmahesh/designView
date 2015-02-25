@@ -1,0 +1,44 @@
+/*hotspots */
+.rectangle {
+    border: 1px solid rgba(255, 0, 0, .5);
+    position: absolute;
+    background: rgba(255, 255, 255, .4);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hotspot {
+    position: absolute;
+    border: 1px solid rgba(0, 255, 0, .4);
+    background: rgba(255, 255, 255, .3);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hotspot:hover {
+    cursor: default;
+    background: rgba(255, 255, 255, .7);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hotspot:hover > img {
+    display: block;
+}
+
+.hotspot > img {
+    position: absolute;
+    right: 0;
+    height: 25px;
+    width: 25px;
+    padding: 5px;
+    display: none;
+    cursor: pointer;
+}
+
+.hotspot:hover p {
+    display: block;
+}
+
+.hotspot p {
+    display: none;
+    margin: 3px;
+    font-weight: bold;
+}

@@ -1,0 +1,79 @@
+/*drag and drop area*/
+.drop-zone {
+    width: 300px;
+    position: absolute;
+    top: 39px;
+    bottom: 0;
+    overflow: auto;
+    background: rgba(0, 0, 0, .1);
+}
+
+.drop-zone > span {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 24px;
+    display: block;
+    margin: 10px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, .8);
+}
+
+.drop-zone .list {
+    overflow: hidden;
+    padding: 0 0 50px 0;
+}
+
+.drop-zone .list > div {
+    float: left;
+    border: 1px solid black;
+    border-radius: 5px;
+    position: relative;
+    margin: 20px 20px 30px 20px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .5);
+    opacity: .7;
+}
+.drop-zone .list > div:hover {
+    opacity: 1;
+}
+
+.drop-zone .list div .screen-container {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.drop-zone .list div .screen {
+    width: 200px;
+}
+
+.drop-zone .list div .cross, .drop-zone .list div .thumbnails, .drop-zone .list div .name {
+    position: absolute;
+}
+
+.drop-zone .list div .thumbnails {
+    display: none;
+}
+
+.drop-zone .list div .cross {
+    display: none;
+    right: -10px;
+    top: -10px;
+    width: 30px;
+}
+
+.drop-zone .list div .name {
+    bottom: -20px;
+    width: 80px;
+    display: block;
+    color: rgba(255, 255, 255, .3);
+    font-weight: bold;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, .5);
+}
+
+.drop-zone .list div:hover .cross, .drop-zone .list div:hover .thumbnails {
+    display: block;
+}

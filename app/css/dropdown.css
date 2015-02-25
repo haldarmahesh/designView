@@ -1,0 +1,30 @@
+/*screen selector*/
+.screen-dropdown {
+    z-index: 100;
+    width: 200px;
+    max-height: 500px;
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+    padding-left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    border: solid 0px rgba(0, 0, 0, .5);
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+
+}
+
+.screen-dropdown li {
+    list-style: none;
+    padding: 7px 5px;
+    background-color: white;
+
+}
+
+.screen-dropdown li:hover {
+    background: rgb(14, 170, 254);
+    color: white;
+    cursor: pointer;
+}

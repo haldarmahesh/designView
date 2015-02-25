@@ -1,0 +1,8 @@
+/*base*/
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background: url("../images/debut_dark.png");
+}

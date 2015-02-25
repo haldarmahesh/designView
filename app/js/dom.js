@@ -1,98 +1,118 @@
-  function setupTools(canvas) {
-        initDraw(document.getElementById(canvas));
+var flag = 0;
+var dropZone = document.getElementById('drop_zone');
+dropZone.addEventListener('dragover', imageFile.handleDragOver, false);
+dropZone.addEventListener('drop', imageFile.handleFileSelect, false);
 
-        function initDraw(canvas) {
-            function setMousePosition(e) {
-                var ev = e || window.event; //Moz || IE
-                if (ev.pageX) { //Moz
-                    mouse.x = ev.pageX + window.pageXOffset;
-                    mouse.y = ev.pageY + window.pageYOffset;
-                } else if (ev.clientX) { //IE
-                    mouse.x = ev.clientX + document.body.scrollLeft;
-                    mouse.y = ev.clientY + document.body.scrollTop;
-                }
-            };
+function addImage(object) {
+  if (checkDuplicateImage(object.img_name + "div")) {
+    if (confirm("You are about to replace the image, are you sure?? ")) {
+      console.log("i will replace the image here");
+      deletePic(object.img_name);
+    } else {
+      return false;
+    }
+  }
 
-            var mouse = {
-                x: 0,
-                y: 0,
-                startX: 0,
-                startY: 0
-            };
-            var divNew = null;
-            canvas.onmousemove = function(e) {
-                setMousePosition();
-                if (element !== null) {
-                    element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
-                    element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
-                    element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px';
-                    element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
-                }
-            }
+  //Creating previews
+  var listTag = document.getElementById('list');
 
-            canvas.onclick = function(e) {
-                if (element !== null) {
-                    // alert(element)
-                
-                    //left = rect.style.left
+  var defaultButton = document.createElement('input');
+  defaultButton.setAttribute('class', "thumbnails");
+  defaultButton.setAttribute('type', 'radio');
+  defaultButton.setAttribute('name', 'default');
+  defaultButton.setAttribute('value', object.img_name);
+  var cross = document.createElement('img');
+  cross.setAttribute('src', 'images/close.png');
+  cross.setAttribute('class', 'cross');
+  cross.setAttribute('onclick', "deletePic('" + object.img_name + "')");
+  var imgContainer = document.createElement('div');
+  imgContainer.setAttribute('class', 'screen-container');
+  var image = document.createElement('img');
+  image.setAttribute('src', object.url);
+  image.setAttribute('title', object.img_name);
+  image.setAttribute('id', object.img_name);
+  image.setAttribute('class', 'screen');
+  image.setAttribute('onclick', "viewImage(this)");
+  imgContainer.appendChild(image);
+  var titleDiv = document.createElement('span');
+  titleDiv.setAttribute('class', 'name');
+  var titleText = document.createTextNode(object.img_name);
+  titleDiv.appendChild(titleText);
 
-                    // width = rect.style.width
-                    // height = rect.style.height
+  var div = document.createElement('div');
+  div.setAttribute('id', object.img_name + "div");
+  div.setAttribute('title', object.img_name);
 
-                    addHotspot(canvas)
-                    canvas.removeChild(rect)
-                    element = null;
-                    canvas.style.cursor = "default";
-                    checkOverlap()
+  div.appendChild(defaultButton);
+  div.appendChild(cross);
+  div.appendChild(imgContainer);
+  div.appendChild(titleDiv);
 
+  listTag.appendChild(div);
 
+  //Creating the actual Image preview
+  var preview = document.getElementById('preview');
+  var canvas = document.createElement('div');
+  canvas.setAttribute('class', 'canvas notuploaded');
+  canvas.setAttribute('id', object.img_name + "c");
+  canvas.style.width = image.naturalWidth + "px";
+  canvas.style.height = image.naturalHeight + "px";
+  canvas.style.display = 'none';
+  var x = document.getElementById(object.img_name).src;
+  canvas.style.backgroundImage = "url('" + x + "')";
+  preview.appendChild(canvas);
+  app.hotspot.createList(object.img_name);
+}
 
-                } else {
-                    // console.log("begun.");
-                    mouse.startX = mouse.x;
-                    mouse.startY = mouse.y;
+function viewImage(obj) {
+  var images = document.getElementsByClassName("thumbnails");
 
-                    element = document.createElement('div');
-                    element.className = 'rectangle'
-                    element.setAttribute('id', 'rect')
-                    element.style.left = mouse.x + 'px';
-                    element.style.top = mouse.y + 'px';
-                    canvas.appendChild(element)
-                    canvas.style.cursor = "crosshair";
-                    element.setAttribute("onkeydown", "escapeKey()")
-                }
-            }
+  if (flag == 0) {
+    images[0].checked = true;
+    flag++;
+  }
 
+  var x = document.getElementsByClassName("canvas");
+  var i;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
 
-        }
-    } 
- function addHotspot(canvas)
- {
- 	divNew = document.createElement('div');
- 	divNew.className = "hotspot";
- 	divNew.setAttribute('id', 'hotspot'+ hotspotcounter);
- 	object = createHotspot()
+  var preview = document.getElementById('preview');
+  preview.style.visibility = 'visible';
 
- 	divNew.style.top = object.top;
- 	divNew.style.left = object.left;
- 	divNew.style.width = object.width;
- 	divNew.style.height = object.height;
- 	img  = document.createElement('img');
- 	img.setAttribute('src', 'images/close.png')
- 	img.setAttribute('onclick', "delete("+'hotspot'+hotspotcounter+")")
- 	divNew.appendChild(img)
+  var canvas = document.getElementById(obj.title + "c");
+  canvas.style.display = 'block';
+  x = document.getElementById(obj.title).src;
+  canvas.style.backgroundImage = "url('" + x + "')";
 
+  currentCanvas = obj.title + "c";
 
- 	canvas.appendChild(divNew);
- 	if(checkOverlap())
- 		{
- 			alert("This is overlapping, not allowed");
- 			hotspot = document.getElementsByClassName("hotspot")
- 			document.getElementsByClassName("hotspot")[hotspot.length- 1].remove()
- 		}
- }
+  var saveButton = document.getElementById('save');
+  saveButton.setAttribute('onclick', "imageFile.saveImage()");
 
- function deleteHotspot(hotspot)
- {
- 	document.remove(hotspot);
- }
+  app.rectangle.setupTools(obj.title + "c");
+}
+
+function deletePic(obj) {
+  document.getElementById(obj + "div").remove();
+  document.getElementById(obj + "c").remove();
+  document.getElementById(obj + "list").remove()
+}
+
+function checkDuplicateImage(divName) {
+  var allImages = document.getElementById("list").childNodes
+  var flagCheck = 0;
+  if (allImages.length > 0) {
+    for (var i = allImages.length - 1; i >= 0; i--) {
+      if (allImages[i].id == divName) {
+        flagCheck = 1;
+      }
+    }
+  }
+  if (flagCheck == 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
