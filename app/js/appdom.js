@@ -31,9 +31,9 @@ app.dom = function() {
   var deletehotspotdom = function(hotspot) {
 
     element = null;
+    normalImage(document.getElementById(hotspot));
     document.getElementById(hotspot).remove();
     document.getElementById('rect').remove();
-    normalImage(document.getElementById(hotspot));
   };
 
   var deleterectangledom = function(canvas, objectID) {
