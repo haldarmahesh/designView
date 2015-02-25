@@ -58,8 +58,8 @@ function addImage(object) {
   canvas.style.width = image.naturalWidth + "px";
   canvas.style.height = image.naturalHeight + "px";
   canvas.style.display = 'none';
-  var x = document.getElementById(object.img_name).src;
-  canvas.style.backgroundImage = "url('" + x + "')";
+ // var x = document.getElementById(object.img_name).src;
+  canvas.style.backgroundImage = "url('" + object.url + "')";
   preview.appendChild(canvas);
   app.hotspot.createList(object.img_name);
 }
@@ -90,7 +90,7 @@ function viewImage(obj) {
 
   var canvas = document.getElementById(obj.title + "c");
   canvas.style.display = 'block';
-  x = document.getElementById(obj.title).src;
+  x = obj.src;
   canvas.style.backgroundImage = "url('" + x + "')";
 
   currentCanvas = obj.title + "c";
