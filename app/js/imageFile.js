@@ -67,7 +67,7 @@ var imageFile = function () {
       }
     }
     var previewButton = document.getElementById('previewButton');
-    previewButton.href = "http://sohamkamani.github.io/web_display_app/dist/index.html"+"?pr="+JSONModule.getJSON().name;
+    previewButton.href = "http://sohamkamani.github.io/web_display_app/dist/index.html"+"?pr="+app.dom.projectName;
   };
 
   return {

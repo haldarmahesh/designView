@@ -154,6 +154,7 @@ var listOfProjects = function(list)
     var li = document.createElement('li');
     li.setAttribute('onclick', 'app.dom.setJsonObjectFetch(this)');
     li.innerHTML = name;
+    app.dom.projectName  =name;
     ul.appendChild(li);
   }
 
