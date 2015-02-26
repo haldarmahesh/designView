@@ -12,7 +12,10 @@ header {
     background: linear-gradient(to bottom, #45484d 0%, #2b2b2b 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#45484d', endColorstr='#2b2b2b', GradientType=0); /* IE6-9 */
 }
-
+.openButton
+{
+    display:none !important;
+}
 header ul {
     margin: 0;
     padding: 0 10px;

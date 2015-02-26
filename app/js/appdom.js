@@ -154,35 +154,35 @@ app.dom = function() {
 
 
 
-    // var showList = function() {
-    //     app.mongodb.fetchAll();
-    // }
+    var showList = function() {
+        app.mongodb.fetchAll();
+    }
 
-    // var listOfProjects = function(list) {
-    //     ul = document.getElementById('projectList');
-    //     var length = list.length;
-    //     for (var i = 0; i < length; i++) {
-    //         var name = list[i].name;
-    //         var li = document.createElement('li');
-    //         li.setAttribute('onclick', 'app.dom.setJsonObjectFetch(this)');
-    //         li.innerHTML = name;
-    //         app.dom.projectName = name;
-    //         ul.appendChild(li);
-    //     }
+    var listOfProjects = function(list) {
+        ul = document.getElementById('projectList');
+        var length = list.length;
+        for (var i = 0; i < length; i++) {
+            var name = list[i].name;
+            var li = document.createElement('li');
+            li.setAttribute('onclick', 'app.dom.setJsonObjectFetch(this)');
+            li.innerHTML = name;
+            app.dom.projectName = name;
+            ul.appendChild(li);
+        }
 
-    // }
+    }
 
-    // var setJsonObjectFetch = function(project) {
-    //     console.log("inside project" + project);
-    //     var JSONObj = new Object();
-    //     JSONObj.name = project.innerHTML;
-    //     app.mongodb.fetchJsonObject(JSONObj);
-    // }
+    var setJsonObjectFetch = function(project) {
+        console.log("inside project" + project);
+        var JSONObj = new Object();
+        JSONObj.name = project.innerHTML;
+        app.mongodb.fetchJsonObject(JSONObj);
+    }
 
-    // var getJSON = function(object) {
-    //     console.log(object[0]);
-    //    // app.open.parseJson(JSON.stringify(object[0]));
-    // }
+    var getJSON = function(object) {
+        console.log(object[0]);
+        app.open.parseJson(JSON.stringify(object[0]));
+    }
 
 
     return {
@@ -202,6 +202,10 @@ app.dom = function() {
         takeProjectName: takeProjectName,
         projectName: projectName,
         checkJsonObject: checkJsonObject,
+        showList: showList,
+        listOfProjects: listOfProjects,
+        setJsonObjectFetch: setJsonObjectFetch,
+        getJSON: getJSON,
         initNewProject: initNewProject
     };
 
