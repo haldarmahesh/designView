@@ -8,3 +8,9 @@ div.projectNameHeader{
   top: 10px;
   color: white;
 }
+div.status{
+	position:absolute;
+	color:red;
+	top:11px;
+	left:470px;
+}

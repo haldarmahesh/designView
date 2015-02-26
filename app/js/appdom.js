@@ -188,6 +188,16 @@ app.dom = function() {
         app.open.parseJson(JSON.stringify(object[0]));
     }
 
+    var newProjectStatus = function()
+    {
+      document.getElementById('status').innerHTML = "Project Created!";
+    }
+
+    var uploadStatus = function()
+    {
+      document.getElementById('status').innerHTML = "Images Uploaded!"
+    }
+
 
     return {
         showDropDown: showDropDown,
@@ -211,7 +221,9 @@ app.dom = function() {
         listOfProjects: listOfProjects,
         setJsonObjectFetch: setJsonObjectFetch,
         getJSON: getJSON,
-        initNewProject: initNewProject
+        initNewProject: initNewProject,
+        newProjectStatus: newProjectStatus,
+        uploadStatus: uploadStatus
     };
 
 }();
