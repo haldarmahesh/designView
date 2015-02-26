@@ -11,8 +11,6 @@ app.open = function() {
         });
 
 
-
-
         var i = 0;
         for (i = 0; i < imagesArray.length; ++i) {
 
@@ -107,7 +105,7 @@ app.open = function() {
 
         }
 
-        //default left
+        
         var defaultImage = JsonObject.default;
         var thumbnails = document.getElementsByClassName('thumbnails');
         var m = 0;

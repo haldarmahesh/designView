@@ -59,21 +59,20 @@ var JSONModule = function() {
             }
 
             for (var j = 0; j < allHotspots.length; j++) {
-                var top = (parseInt(allHotspots[j].style.top))*100.0/imageHeight;
-                var left = (parseInt(allHotspots[j].style.left))*100.0/imageWidth;
-                var width = parseInt(allHotspots[j].style.width)*100.0/imageWidth;
-                var height = parseInt(allHotspots[j].style.height)*100.0/imageHeight;
+                var top = (parseInt(allHotspots[j].style.top)) * 100.0 / imageHeight;
+                var left = (parseInt(allHotspots[j].style.left)) * 100.0 / imageWidth;
+                var width = parseInt(allHotspots[j].style.width) * 100.0 / imageWidth;
+                var height = parseInt(allHotspots[j].style.height) * 100.0 / imageHeight;
                 var id = allHotspots[j].id;
 
 
 
                 if (allHotspots[j].style.top == "") {
-               
                     url = allHotspots[j].innerHTML;
                     continue;
-                   }else{
+                } else {
                     var link = allHotspots[j].childNodes[1].innerHTML;
-               
+
                 }
                 _writeHotspot(hotspotlist, id, top, left, width, height, link);
 
@@ -83,9 +82,16 @@ var JSONModule = function() {
         }
 
         JSONObj["name"] = document.getElementById('projectName').value;
-        JSONObj["images"] = imageArray;
+
+        if (imageArray.length != 0) {
+            JSONObj["images"] = imageArray;
+        } else {
+            JSONObj["images"] = {};
+        }
+
         JSONObj["default"] = defaultImageValue;
-            }
+
+    }
     var getJSON = function() {
         return JSONObj;
     }
