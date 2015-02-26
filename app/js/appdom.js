@@ -112,6 +112,13 @@ app.dom = function()
         var newProject = document.getElementById('newProject');
         newProject.style.display = 'block';
     }
+
+    var closePopup = function()
+    {
+        var closeWindow = document.getElementById('newProject');
+        closeWindow.style.display = 'none';
+    }
+
     var createProject = function() {
         //window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html?#","_blank");
 
@@ -192,6 +199,7 @@ app.dom = function()
         projectName: projectName,
         checkJsonObject: checkJsonObject,
         showList: showList,
+        closePopup: closePopup,
         listOfProjects: listOfProjects,
         setJsonObjectFetch: setJsonObjectFetch,
         getJSON: getJSON
