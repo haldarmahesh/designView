@@ -63,6 +63,9 @@ var imageFile = function () {
           JSONModule.generateJSON();
           app.mongodb.insert(JSONModule.getJSON());
           console.log("JSON CREATED and PUSHED");
+          var prebutton = document.getElementsByClassName('prebutton');
+         prebutton[0].style.display = 'inline-block';
+         console.log("set");
         }
       }
     }
