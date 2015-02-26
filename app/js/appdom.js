@@ -111,8 +111,7 @@ app.dom = function() {
         var newProject = document.getElementById('newProject');
         newProject.style.display = 'block';
     }
-    var closePopup = function()
-    {
+    var closePopup = function() {
         var closeWindow = document.getElementById('newProject');
         closeWindow.style.display = 'none';
     }
@@ -131,9 +130,9 @@ app.dom = function() {
     var initNewProject = function() {
         var jsonObject = new Object();
 
-        if(location.href.split('?')[1]!=undefined)
-         { var projectNamefromUrl = location.href.split('?')[1].split('=')[1];
-        
+        if (location.href.split('?')[1] != undefined) {
+            var projectNamefromUrl = location.href.split('?')[1].split('=')[1];
+
             _setProjectNameTitle(projectNamefromUrl);
             app.dom.projectName = projectNamefromUrl;
             app.mongodb.fetch(jsonObject);
@@ -188,14 +187,16 @@ app.dom = function() {
         app.open.parseJson(JSON.stringify(object[0]));
     }
 
-    var newProjectStatus = function()
-    {
-      document.getElementById('status').innerHTML = "Project Created!";
+    var newProjectStatus = function() {
+        document.getElementById('status').innerHTML = "Project Created !";
     }
 
-    var uploadStatus = function()
-    {
-      document.getElementById('status').innerHTML = "Images Uploaded!"
+    var uploadStatus = function() {
+        document.getElementById('status').innerHTML = "Project Saved !"
+    }
+
+    var uploadingStatus = function() {
+        document.getElementById('status').innerHTML = "Saving ..."
     }
 
 
@@ -223,7 +224,8 @@ app.dom = function() {
         getJSON: getJSON,
         initNewProject: initNewProject,
         newProjectStatus: newProjectStatus,
-        uploadStatus: uploadStatus
+        uploadStatus: uploadStatus,
+        uploadingStatus: uploadingStatus
     };
 
 }();
