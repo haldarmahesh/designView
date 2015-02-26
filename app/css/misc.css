@@ -2,3 +2,15 @@
 .filepickerurltext {
     display: none;
 }
+div.projectNameHeader{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: white;
+}
+div.status{
+	position:absolute;
+	color:red;
+	top:11px;
+	left:470px;
+}
