@@ -90,6 +90,7 @@ var JSONModule = function() {
         }
 
         JSONObj["default"] = defaultImageValue;
+        JSONObj["name"] = app.dom.projectName;
 
     }
     var getJSON = function() {

@@ -1,5 +1,4 @@
-app.dom = function() 
-{
+app.dom = function() {
 
     var hotspotcounter = 0;
     var projectName;
@@ -112,17 +111,30 @@ app.dom = function()
         var newProject = document.getElementById('newProject');
         newProject.style.display = 'block';
     }
+
+    var createProjectinNewTab = function() {
+        window.open("index.html?newproject=" + document.getElementById('projectName').value, "_blank");
+    }
     var createProject = function() {
         //window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html?#","_blank");
+
         var newProject = document.getElementById('newProject');
         newProject.style.display = "none";
+        createProjectinNewTab();
+
+    }
+
+    var initNewProject = function() {
         var jsonObject = new Object();
 
-        _setProjectNameTitle(document.getElementById('projectName').value);
-
-        jsonObject.name = app.dom.projectName;
-
-        app.mongodb.fetch(jsonObject);
+        if(location.href.split('?')[1]!=undefined)
+         { var projectNamefromUrl = location.href.split('?')[1].split('=')[1];
+        
+            _setProjectNameTitle(projectNamefromUrl);
+            app.dom.projectName = projectNamefromUrl;
+            app.mongodb.fetch(jsonObject);
+            jsonObject.name = app.dom.projectName;
+        }
     }
 
     var _setProjectNameTitle = function(name) {
@@ -189,7 +201,8 @@ app.dom = function()
         createProject: createProject,
         takeProjectName: takeProjectName,
         projectName: projectName,
-        checkJsonObject: checkJsonObject
+        checkJsonObject: checkJsonObject,
+        initNewProject: initNewProject
     };
 
 }();
