@@ -69,6 +69,7 @@ app.mongodb = (function() {
       var url = makeInsertFetchJson(data);
       promise("PUT", url, JSON.stringify(data)).then(function(response) {
       console.log('Successful !!');
+      app.dom.uploadStatus();
     }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
@@ -81,6 +82,7 @@ app.mongodb = (function() {
       var url = makeNewInsertFetchJson(data);
       promise("POST", url, JSON.stringify(data)).then(function(response) {
       console.log('Successful !!');
+      app.dom.newProjectStatus();
     }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });

@@ -38,6 +38,9 @@ var saveFile = function () {
           app.mongodb.insert(JSONModule.getJSON(),"json");
           saveFile.doneUrl = 0;
           console.log("JSON CREATED and PUSHED");
+          var prebutton = document.getElementsByClassName('prebutton');
+         prebutton[0].style.display = 'inline-block';
+         console.log("set");
         }
 
       },
