@@ -2,79 +2,74 @@
 <html>
 
 <head>
-    <title>Orb42 : Designer</title>
-    <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:100" rel="stylesheet" type="text/css">
+  <title>Orb42 : Designer</title>
+  <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:100" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
-    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="../bower_components/font-awesome-animation/dist/font-awesome-animation.css" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/font-awesome-4.3.0/css/font-awesome.min.css" />
+  <!-- <link rel="stylesheet" href="css/font-awesome-animation/dist/font-awesome-animation.css" /> -->
 
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/drop.css" />
-    <link rel="stylesheet" href="css/dropdown.css" />
-    <link rel="stylesheet" href="css/hotspots.css" />
-    <link rel="stylesheet" href="css/preview.css" />
-    <link rel="stylesheet" href="css/misc.css" />
-    <link rel="stylesheet" href="css/screen.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/drop.css" />
+  <link rel="stylesheet" href="css/dropdown.css" />
+  <link rel="stylesheet" href="css/hotspots.css" />
+  <link rel="stylesheet" href="css/preview.css" />
+  <link rel="stylesheet" href="css/misc.css" />
+  <link rel="stylesheet" href="css/screen.css" />
 
 
 </head>
 
 <body onload="app.dom.initNewProject();app.previewdom.dragdrop();" onkeydown="app.hotspot.escapeKey(event)">
-
-    <header>
-        <ul class="menu">
-            <li><strong>Orb42 : Designer</strong>
-            </li>
-            <li class="button">
-                <a href="#" id="new" onclick="app.dom.takeProjectName()">New</a>
-            </li>
-            <li class="button">
-                <a href="#" id="open" class="openButton" onclick="app.dom.showList()">Open</a>
-                <ul id="projectList"></ul>
-            </li>
-            <li class="button">
-                <a href="#" id="save">Save</a>
-            </li>
-            <li class="button">
-                <a href="#" id="previewButton">Preview</a>
-            </li>
-        </ul>
-        <div class="projectNameHeader">New Project</div>
-    </header>
-    <div class="new-project" id="newProject">
-
-        <input type="text" id="projectName" placeholder="Project Name" required/>
-        <input type="button" class="createBtn" value="Create" onclick="app.dom.createProject();" />
-
-    </div>
-    <div id="drop_zone" class="drop-zone">
-        <span>Drag and drop files here &hellip;</span>
-        <div id="list" class="list"></div>
-    </div>
+  <header>
+    <ul class="menu">
+      <li><strong>Orb42 : Designer</strong>
+      </li>
+      <li class="button">
+        <a href="#" id="new" onclick="app.dom.takeProjectName()">New<span><i class="fa fa-file-o"></i></span></a>
+        
+      </li>
+      <li class="button">        
+        <a href="#" id="save">Save<span><i class="fa fa-cloud-upload"></i></span></a>
+      </li>
+      <li class="button">
+        <a href="#" id="previewButton">Preview<span><i class="fa fa-eye"></i></span></a>        
+      </li>
+    </ul>
+    <div class="projectNameHeader">New Project</div>
+  </header>
+  <div class="new-project" id="newProject">
+    <input type="text" id="projectName" placeholder="Project Name" required/>
+    <input type="button" class="createBtn" value="Create" onclick="app.dom.createProject();" />
+    <input type="button" class="createBtn" value="Cancel" onclick="app.dom.closePopup();" />
+  </div>
+  <div id="drop_zone" class="drop-zone">
+    <span>Drag and drop files here &hellip;</span>
+    <div id="list" class="list"></div>
+  </div>
 
 
 
-    <div class="preview" id="preview" onkeypress="app.hotspot.escapeKey(event)">
-        <ul id="dropdown" class="screen-dropdown">
-        </ul>
-    </div>
+  <div class="preview" id="preview" onkeypress="app.hotspot.escapeKey(event)">
+    <ul id="dropdown" class="screen-dropdown">
+    </ul>
+  </div>
 
 
-    <script type="text/javascript" src="http://api.filepicker.io/v1/filepicker.js"></script>
-    <script src="https://api.filepicker.io/v1/filepicker_debug.js"></script>
-    <script type="text/javascript" src="js/lodash.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/appdom.js"></script>
-    <script type="text/javascript" src="js/apprectangle.js"></script>
-    <script type="text/javascript" src="js/apphotspot.js"></script>
-    <script type="text/javascript" src="js/appmongo.js"></script>
-    <script type="text/javascript" src="js/json.js"></script>
-    <script type="text/javascript" src="js/imageFile.js"></script>
-    <script type="text/javascript" src="js/save.js"></script>
-    <script type="text/javascript" src="js/dom.js"></script>
-    <script type="text/javascript" src="js/openmodule.js"></script>
+  <script type="text/javascript" src="http://api.filepicker.io/v1/filepicker.js"></script>
+  <script src="https://api.filepicker.io/v1/filepicker_debug.js"></script>
+  <script type="text/javascript" src="js/lodash.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/appdom.js"></script>
+  <script type="text/javascript" src="js/apprectangle.js"></script>
+  <script type="text/javascript" src="js/apphotspot.js"></script>
+  <script type="text/javascript" src="js/appmongo.js"></script>
+  <script type="text/javascript" src="js/json.js"></script>
+  <script type="text/javascript" src="js/imageFile.js"></script>
+  <script type="text/javascript" src="js/save.js"></script>
+  <script type="text/javascript" src="js/dom.js"></script>
+  <script type="text/javascript" src="js/openmodule.js"></script>
 </body>
 
 </html>

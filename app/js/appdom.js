@@ -111,7 +111,11 @@ app.dom = function() {
         var newProject = document.getElementById('newProject');
         newProject.style.display = 'block';
     }
-
+    var closePopup = function()
+    {
+        var closeWindow = document.getElementById('newProject');
+        closeWindow.style.display = 'none';
+    }
     var createProjectinNewTab = function() {
         window.open("index.html?newproject=" + document.getElementById('projectName').value, "_blank");
     }
@@ -203,6 +207,7 @@ app.dom = function() {
         projectName: projectName,
         checkJsonObject: checkJsonObject,
         showList: showList,
+        closePopup: closePopup,
         listOfProjects: listOfProjects,
         setJsonObjectFetch: setJsonObjectFetch,
         getJSON: getJSON,
