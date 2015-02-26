@@ -99,34 +99,32 @@ app.mongodb = (function() {
 
   };
 
-  var fetchAll = function()
-  {
-    var url = makeFetchAllJson();
-    promise('get', url, null).then(function(response) {
-      console.log('Successfully fetched !!');
-       app.dom.listOfProjects(response);
-    }, function(status) {
-      console.log('Unsuccessful!! Error status: ' + status);
-    });
+  // var fetchAll = function()
+  // {
+  //   var url = makeFetchAllJson();
+  //   promise('get', url, null).then(function(response) {
+  //     console.log('Successfully fetched !!');
+  //      app.dom.listOfProjects(response);
+  //   }, function(status) {
+  //     console.log('Unsuccessful!! Error status: ' + status);
+  //   });
 
-  }
+  // }
 
-  var fetchJsonObject = function(data) {
-    var url = makeInsertFetchJson(data);
-    promise('get', url, null).then(function(response) {
-      console.log('Successfully fetched !!');
-      app.dom.getJSON(response);
-    }, function(status) {
-      console.log('Unsuccessful!! Error status: ' + status);
-    });
+  // var fetchJsonObject = function(data) {
+  //   var url = makeInsertFetchJson(data);
+  //   promise('get', url, null).then(function(response) {
+  //     console.log('Successfully fetched !!');
+  //     app.dom.getJSON(response);
+  //   }, function(status) {
+  //     console.log('Unsuccessful!! Error status: ' + status);
+  //   });
 
-  };
+  // };
 
   return {
     insert: insert,
     fetch: fetch,
-    insertNew: insertNew,
-    fetchAll: fetchAll,
-    fetchJsonObject: fetchJsonObject
+    insertNew: insertNew
   };
 })();

@@ -1,5 +1,4 @@
-app.dom = function() 
-{
+app.dom = function() {
 
     var hotspotcounter = 0;
     var projectName;
@@ -113,24 +112,38 @@ app.dom = function()
         newProject.style.display = 'block';
     }
 
+<<<<<<< HEAD
     var closePopup = function()
     {
         var closeWindow = document.getElementById('newProject');
         closeWindow.style.display = 'none';
     }
 
+=======
+    var createProjectinNewTab = function() {
+        window.open("index.html?newproject=" + document.getElementById('projectName').value, "_blank");
+    }
+>>>>>>> dade553f09ee6cf21047eea7245099e94d449d51
     var createProject = function() {
         //window.open("file:///Users/aditijoshi/Desktop/design/designView/app/index.html?#","_blank");
 
         var newProject = document.getElementById('newProject');
         newProject.style.display = "none";
+        createProjectinNewTab();
+
+    }
+
+    var initNewProject = function() {
         var jsonObject = new Object();
 
-        _setProjectNameTitle(document.getElementById('projectName').value);
-
-        jsonObject.name = app.dom.projectName;
-
-        app.mongodb.fetch(jsonObject);
+        if(location.href.split('?')[1]!=undefined)
+         { var projectNamefromUrl = location.href.split('?')[1].split('=')[1];
+        
+            _setProjectNameTitle(projectNamefromUrl);
+            app.dom.projectName = projectNamefromUrl;
+            app.mongodb.fetch(jsonObject);
+            jsonObject.name = app.dom.projectName;
+        }
     }
 
     var _setProjectNameTitle = function(name) {
@@ -150,35 +163,35 @@ app.dom = function()
 
 
 
-    var showList = function() {
-        app.mongodb.fetchAll();
-    }
+    // var showList = function() {
+    //     app.mongodb.fetchAll();
+    // }
 
-    var listOfProjects = function(list) {
-        ul = document.getElementById('projectList');
-        var length = list.length;
-        for (var i = 0; i < length; i++) {
-            var name = list[i].name;
-            var li = document.createElement('li');
-            li.setAttribute('onclick', 'app.dom.setJsonObjectFetch(this)');
-            li.innerHTML = name;
-            app.dom.projectName = name;
-            ul.appendChild(li);
-        }
+    // var listOfProjects = function(list) {
+    //     ul = document.getElementById('projectList');
+    //     var length = list.length;
+    //     for (var i = 0; i < length; i++) {
+    //         var name = list[i].name;
+    //         var li = document.createElement('li');
+    //         li.setAttribute('onclick', 'app.dom.setJsonObjectFetch(this)');
+    //         li.innerHTML = name;
+    //         app.dom.projectName = name;
+    //         ul.appendChild(li);
+    //     }
 
-    }
+    // }
 
-    var setJsonObjectFetch = function(project) {
-        console.log("inside project" + project);
-        var JSONObj = new Object();
-        JSONObj.name = project.innerHTML;
-        app.mongodb.fetchJsonObject(JSONObj);
-    }
+    // var setJsonObjectFetch = function(project) {
+    //     console.log("inside project" + project);
+    //     var JSONObj = new Object();
+    //     JSONObj.name = project.innerHTML;
+    //     app.mongodb.fetchJsonObject(JSONObj);
+    // }
 
-    var getJSON = function(object) {
-        console.log(object[0]);
-        app.open.parseJson(JSON.stringify(object[0]));
-    }
+    // var getJSON = function(object) {
+    //     console.log(object[0]);
+    //    // app.open.parseJson(JSON.stringify(object[0]));
+    // }
 
 
     return {
@@ -198,11 +211,15 @@ app.dom = function()
         takeProjectName: takeProjectName,
         projectName: projectName,
         checkJsonObject: checkJsonObject,
+<<<<<<< HEAD
         showList: showList,
         closePopup: closePopup,
         listOfProjects: listOfProjects,
         setJsonObjectFetch: setJsonObjectFetch,
         getJSON: getJSON
+=======
+        initNewProject: initNewProject
+>>>>>>> dade553f09ee6cf21047eea7245099e94d449d51
     };
 
 }();
