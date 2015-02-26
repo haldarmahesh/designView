@@ -1,4 +1,5 @@
-app.dom = function() {
+app.dom = function() 
+{
 
     var hotspotcounter = 0;
     var projectName;
@@ -140,6 +141,8 @@ app.dom = function() {
         }
     }
 
+
+
     var showList = function() {
         app.mongodb.fetchAll();
     }
@@ -150,12 +153,24 @@ app.dom = function() {
         for (var i = 0; i < length; i++) {
             var name = list[i].name;
             var li = document.createElement('li');
-            // var a = document.createElement('a');
-            // a.setAttribute('href', '#');
+            li.setAttribute('onclick', 'app.dom.setJsonObjectFetch(this)');
             li.innerHTML = name;
+            app.dom.projectName = name;
             ul.appendChild(li);
         }
 
+    }
+
+    var setJsonObjectFetch = function(project) {
+        console.log("inside project" + project);
+        var JSONObj = new Object();
+        JSONObj.name = project.innerHTML;
+        app.mongodb.fetchJsonObject(JSONObj);
+    }
+
+    var getJSON = function(object) {
+        console.log(object[0]);
+        app.open.parseJson(JSON.stringify(object[0]));
     }
 
 
@@ -177,7 +192,9 @@ app.dom = function() {
         projectName: projectName,
         checkJsonObject: checkJsonObject,
         showList: showList,
-        listOfProjects: listOfProjects
-    }
+        listOfProjects: listOfProjects,
+        setJsonObjectFetch: setJsonObjectFetch,
+        getJSON: getJSON
+    };
 
 }();
