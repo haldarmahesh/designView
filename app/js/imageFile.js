@@ -42,6 +42,7 @@ var imageFile = function () {
   };
 
   var saveImage = function () {
+    app.dom.uploadingStatus();
     var x = document.getElementsByClassName("canvas");
     var i;
 
@@ -71,6 +72,7 @@ var imageFile = function () {
     }
     var previewButton = document.getElementById('previewButton');
     previewButton.href = "http://sohamkamani.github.io/web_display_app/dist/index.html"+"?pr="+app.dom.projectName;
+    previewButton.setAttribute('target','_blank');
   };
 
   return {
