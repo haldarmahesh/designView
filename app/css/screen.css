@@ -25,6 +25,7 @@
     color: white;
     border:1px solid black;
     padding: 5px;
+    float: left;
 }
 
 .new-project > .createBtn:hover {
